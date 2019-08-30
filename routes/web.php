@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('', function () {
+Route::get('/public', function () {
     return view('welcome');
+})->name('main');
+
+Route::get('/', function () {
+    return route('main');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
