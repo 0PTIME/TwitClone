@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/public', function () {
-    return view('welcome');
-})->name('main');
-
 Route::get('/', function () {
-    return route('main');
+    return view('welcome');
 });
+
 
 Auth::routes();
 
