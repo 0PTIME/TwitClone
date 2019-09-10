@@ -20,6 +20,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <div class="absoluteTweet" id="showTweetComposition" style="display: none;">
+        <div class="tweetCompMain">
+
+        </div>
+    </div>
     <div class="leftMain">
         <div class="leftPlaceholder">
             <div class="leftContentHolder">
@@ -112,7 +117,7 @@
                         @csrf
                         <input type="file" name="image" id="ProfileInputFile" onchange="form.submit()" class="fileUpload">
                         <div class="sidebarMenuContainer">
-                            <button class="sidebarMenuLinks" id="ProfileUploadButton">
+                            <button type="button" class="sidebarMenuLinks" id="ProfileUploadButton">
                                 <div class="sidebarMenuIcons">
                                     <img src="{{ url('/asset/user/pic') }}" class="miniProfilePic">
                                 </div>
@@ -134,13 +139,17 @@
                     </div>
                 </nav>
                 <div class="sidebarMenuLinks">
-                    <button class="bigTweetButton">Tweet</button>
+                    <button class="bigTweetButton" id="bigTweetButtonId">Tweet</button>
                 </div>
                 
             </div>
         </div>
     </div>
     <div class="main">
+        <div class="mainHeader">
+            <p class="globalHeader">{{ Route::currentRouteName() }}</p>
+        </div>
+        <div class="mainPlaceholder"></div>
         @yield('content')
     </div>
     <div class="rightMain">

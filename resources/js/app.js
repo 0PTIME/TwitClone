@@ -34,3 +34,10 @@ const app = new Vue({
 jQuery('#ProfileUploadButton').click(function(){
     jQuery('#ProfileInputFile').click();
 });
+
+jQuery('#bigTweetButtonId').click(function(){
+    document.getElementById('showTweetComposition').style.display = "block";
+});
+jQuery('#showTweetComposition').click(function(){
+    document.getElementById('showTweetComposition').style.display = "none";
+});

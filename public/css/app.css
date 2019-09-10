@@ -10648,13 +10648,32 @@ body {
   color: white;
 }
 
+.absoluteTweet {
+  background-color: rgba(190, 189, 189, 0.144);
+  width: 100%;
+  height: 100%;
+  clip: auto;
+  overflow: hidden;
+  position: fixed;
+  z-index: 10;
+}
+
+.absoluteTweet .tweetCompMain {
+  margin-left: calc(50vw - 300px);
+  margin-top: 5vh;
+  width: 600px;
+  height: 300px;
+  border-radius: 13px;
+  background-color: #15202b;
+}
+
 .colorBlue {
   color: #1da1f2;
 }
 
 .leftMain {
   float: left;
-  width: calc(50vw - 300px);
+  width: calc(46vw - 300px);
   height: 100vh;
 }
 
@@ -10670,12 +10689,12 @@ body {
 
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent {
   margin-top: 100px;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer {
   width: 95%;
-  font-weight: bold;
+  font-weight: 700;
   background-color: transparent;
   cursor: pointer;
   border: none;
@@ -10718,6 +10737,15 @@ body {
   display: inline-block;
 }
 
+.globalHeader {
+  text-transform: capitalize;
+  margin-top: 9px;
+  margin-left: 45px;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .fileUpload {
   display: none;
 }
@@ -10743,6 +10771,23 @@ body {
 .main {
   width: 600px;
   display: inline-block;
+}
+
+.main .mainHeader {
+  position: fixed;
+  width: 600px;
+  height: 54px;
+  background-color: #15202b;
+  z-index: 5;
+  border-right: 1px solid #38444d;
+  border-left: 1px solid #38444d;
+  border-bottom: 1px solid #38444d;
+}
+
+.main .mainPlaceholder {
+  height: 54px;
+  width: 600px;
+  visibility: hidden;
 }
 
 .rightMain {

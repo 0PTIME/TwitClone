@@ -18,7 +18,7 @@ class AssetController extends Controller
         $new_path = $path . $name . $color . ".png";
 
         if(\file_exists($new_path)){
-            return Image::make($new_path)->fit(24, 24)->response();
+            return Image::make($new_path)->fit(24)->response();
         }
         return \response()->json(null);
     }
@@ -30,10 +30,10 @@ class AssetController extends Controller
         $def_path = $path . "defPic" . $color . ".png";
 
         if(\file_exists($new_path)){
-            return Image::make($new_path)->fit(24, 24)->response();
+            return Image::make($new_path)->fit(24)->response();
         }
         else if(\file_exists($def_path)){
-            return Image::make($def_path)->fit(24, 24)->response();
+            return Image::make($def_path)->fit(24)->response();
         }
         return \response()->json(null);
     }
