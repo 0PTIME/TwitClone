@@ -30,3 +30,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+jQuery('#ProfileUploadButton').click(function(){
+    jQuery('#ProfileInputFile').click();
+});

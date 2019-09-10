@@ -10648,7 +10648,12 @@ body {
   color: white;
 }
 
+.colorBlue {
+  color: #1da1f2;
+}
+
 .leftMain {
+  float: left;
   width: calc(50vw - 300px);
   height: 100vh;
 }
@@ -10664,11 +10669,99 @@ body {
 }
 
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent {
-  font-size: 25px;
+  margin-top: 100px;
+  font-size: 24px;
+}
+
+.leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer {
+  width: 95%;
+  font-weight: bold;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  display: table;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer:hover > .sidebarMenuLinks {
+  border-radius: 50px;
+  background-color: #162d40;
+  color: #1da1f2;
+}
+
+.leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer .sidebarMenuLinks {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  color: white;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  text-decoration: none;
+}
+
+.leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer .sidebarMenuLinks:hover {
+  border-radius: 50px;
+  background-color: #162d40;
+  color: #1da1f2;
+}
+
+.leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer .sidebarMenuLinks .sidebarMenuIcons {
+  display: inline-block;
+  margin-right: 15px;
+  width: 26px;
+}
+
+.leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer .sidebarMenuLinks .sidebarMenuText {
+  display: inline-block;
+}
+
+.fileUpload {
+  display: none;
+}
+
+.bigTweetButton {
+  background-color: #1da1f2;
+  border: 2px solid #1da1f2;
+  margin-top: 40px;
+  color: white;
+  border-radius: 50px;
+  width: 230px;
+  height: 45px;
+}
+
+.bigTweetButton:hover {
+  border: 2px solid #162d40;
+}
+
+.miniProfilePic {
+  border-radius: 50%;
 }
 
 .main {
   width: 600px;
-  margin-left: calc(50vw - 300px);
+  display: inline-block;
+}
+
+.rightMain {
+  display: inline-block;
+  position: fixed;
+  height: 100vh;
+  width: calc(50vw - 300px);
+}
+
+.rightMain .rightPlaceholder {
+  width: 270px;
+  float: left;
+}
+
+.rightMain .rightPlaceholder .rightContentHolder {
+  width: inherit;
+}
+
+.rightMain .rightPlaceholder .rightContentHolder .rightMainContent {
+  font-size: 25px;
 }
 
