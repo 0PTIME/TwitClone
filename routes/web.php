@@ -31,6 +31,6 @@ Route::get('/{name}', 'ProfileController@index')->name('name');
 Route::post('/pfupload', 'UploadsController@pfupload')->name('profileUpload.post');
 
 Route::prefix('asset')->group(function(){
-    Route::get('icon/{name}/{color}', 'AssetController@icon');
-    Route::get('user/pic', 'AssetController@profilePic');
+    Route::get('icon/{name}/{color?}/{size?}', 'AssetController@icon');
+    Route::get('{id}/pic/{size?}', 'AssetController@profilePic');
 });

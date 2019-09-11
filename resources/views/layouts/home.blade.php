@@ -20,16 +20,50 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <div class="bigCoverTransparent" id="bigCoverupTransparent"style="display: none;"></div>
+    <div class="bigCoverOpacity" id="bigCoverupOpacity" style="display: none;"></div>
     <div class="absoluteTweet" id="showTweetComposition" style="display: none;">
         <div class="tweetCompMain">
-
+            <div class="tweetCompMainPlaceholder">
+                <div class="tweetCompHeaderBar">
+                    <div class="tweetHeaderBarMainContent">
+                        <div class="closeButton">
+                            <img src="{{ url('/asset/icon/x/Blue/22') }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="tweetCompMainContent">
+                    <div class="tweetCompMainContentPlaceholder">
+                        <div class="sideProfileMain">
+        
+                        </div>
+                        <div class="tweetCompositionMain">
+                            <div class="tweetCompostisionMainPlaceholder">
+                                <div class="tweetMainCompositionArea">
+            
+                                </div>
+                                <div class="tweetCompFooter">
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="leftMain">
         <div class="leftPlaceholder">
             <div class="leftContentHolder">
                 <nav class="leftMainContent">
-                    <div class="sidebarMenuContainer" onclick="{{ route('home') }}">
+                    <div class="sidebarMenuContainer" onclick="location.href='{{ route('home') }}'">
+                        <a href="{{ route('home') }}" class="sidebarMenuLinks">
+                            <div class="sidebarMenuIcons">
+                                <img src="{{ url('/asset/icon/dog/White') }}">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sidebarMenuContainer" onclick="location.href='{{ route('home') }}'">
                         <a href="{{ route('home') }}" class="sidebarMenuLinks">
                             <div class="sidebarMenuIcons">
                                 @if (Route::currentRouteName() == "home")
@@ -43,7 +77,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="sidebarMenuContainer">
+                    <div class="sidebarMenuContainer" onclick="location.href='{{ route('explore') }}'">
                         <a href="{{ route('explore') }}" class="sidebarMenuLinks">
                             <div class="sidebarMenuIcons">
                                 @if (Route::currentRouteName() == "explore")
@@ -57,7 +91,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="sidebarMenuContainer">
+                    <div class="sidebarMenuContainer" onclick="location.href='{{ route('notifications') }}'">
                         <a href="{{ route('notifications') }}" class="sidebarMenuLinks">                    
                             <div class="sidebarMenuIcons">
                                 @if (Route::currentRouteName() == "notifications")
@@ -71,7 +105,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="sidebarMenuContainer">
+                    <div class="sidebarMenuContainer" onclick="location.href='{{ route('messages') }}'">
                         <a href="{{ route('messages') }}" class="sidebarMenuLinks">                    
                             <div class="sidebarMenuIcons">
                                 @if (Route::currentRouteName() == "messages")
@@ -85,7 +119,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="sidebarMenuContainer">
+                    <div class="sidebarMenuContainer" onclick="location.href='/i/bookmarks'">
                         <a href="/i/bookmarks" class="sidebarMenuLinks">                    
                             <div class="sidebarMenuIcons">
                                 @if (Route::currentRouteName() == "bookmarks")
@@ -99,7 +133,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="sidebarMenuContainer" onclick="/{{ auth()->user()->id }}/lists">
+                    <div class="sidebarMenuContainer" onclick="location.href='/{{ auth()->user()->id }}/lists'">
                         <a href="/{{ auth()->user()->id }}/lists" class="sidebarMenuLinks">                    
                             <div class="sidebarMenuIcons">
                                 @if (Route::currentRouteName() == "lists")
@@ -119,7 +153,7 @@
                         <div class="sidebarMenuContainer">
                             <button type="button" class="sidebarMenuLinks" id="ProfileUploadButton">
                                 <div class="sidebarMenuIcons">
-                                    <img src="{{ url('/asset/user/pic') }}" class="miniProfilePic">
+                                    <img src="{{ url('/asset/' . Auth::user()->id . '/pic') }}" class="miniProfilePic">
                                 </div>
                                 <div class="sidebarMenuText">
                                     <span>Profile</span>
@@ -127,8 +161,8 @@
                             </button>
                         </div>
                     </form>
-                    <div class="sidebarMenuContainer">
-                        <button class="sidebarMenuLinks">                    
+                    <div class="sidebarMenuContainer" onclick="document.getElementById('moreButton').click();">
+                        <button class="sidebarMenuLinks" id="moreButton">
                             <div class="sidebarMenuIcons">
                                 <img src="{{ url('/asset/icon/menu/White') }}">
                             </div>
@@ -136,6 +170,17 @@
                                 <span>More</span>
                             </div>
                         </button>
+                        <div class="dropdown-content" id="sidebarDropdownMenu" style="display: none;">
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                            <p class="temp">testing</p>
+                        </div>
                     </div>
                 </nav>
                 <div class="sidebarMenuLinks">

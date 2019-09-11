@@ -10667,13 +10667,65 @@ body {
   background-color: #15202b;
 }
 
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompHeaderBar {
+  width: 100%;
+  height: 54px;
+  border-bottom: 1px solid #3d5466;
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent {
+  width: 100%;
+  height: calc(100% - 54px);
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent .tweetCompMainContentPlaceholder {
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent .tweetCompMainContentPlaceholder .sideProfileMain {
+  width: 50px;
+  height: 100%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent .tweetCompMainContentPlaceholder .tweetCompositionMain {
+  width: calc(100% - 61px);
+  height: calc(100% - 10px);
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-left: 2px;
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent .tweetCompMainContentPlaceholder .tweetCompositionMain .tweetCompostisionMainPlaceholder {
+  width: 100%;
+  height: 100%;
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent .tweetCompMainContentPlaceholder .tweetCompositionMain .tweetCompostisionMainPlaceholder .tweetMainCompositionArea {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+.absoluteTweet .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent .tweetCompMainContentPlaceholder .tweetCompositionMain .tweetCompostisionMainPlaceholder .tweetCompFooter {
+  height: 50px;
+}
+
 .colorBlue {
   color: #1da1f2;
 }
 
 .leftMain {
   float: left;
-  width: calc(46vw - 300px);
+  width: calc(45.8vw - 300px);
   height: 100vh;
 }
 
@@ -10688,19 +10740,20 @@ body {
 }
 
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent {
-  margin-top: 100px;
-  font-size: 22px;
+  font-size: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer {
   width: 95%;
-  font-weight: 700;
   background-color: transparent;
   cursor: pointer;
   border: none;
-  display: table;
   padding-top: 10px;
   padding-bottom: 10px;
+  height: 60px;
 }
 
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer:hover > .sidebarMenuLinks {
@@ -10730,17 +10783,49 @@ body {
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer .sidebarMenuLinks .sidebarMenuIcons {
   display: inline-block;
   margin-right: 15px;
-  width: 26px;
+  width: auto;
+  height: auto;
 }
 
 .leftMain .leftPlaceholder .leftContentHolder .leftMainContent .sidebarMenuContainer .sidebarMenuLinks .sidebarMenuText {
   display: inline-block;
 }
 
+.temp:hover {
+  background-color: blue;
+}
+
+.bigCoverTransparent {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.0001;
+  position: fixed;
+  z-index: 6;
+  opacity: 0;
+}
+
+.bigCoverTransparent {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(190, 189, 189, 0.144);
+  position: fixed;
+  z-index: 6;
+}
+
+.dropdown-content {
+  background-color: #15202b;
+  opacity: 1;
+  position: absolute;
+  overflow: auto;
+  z-index: 8;
+  width: 150px;
+  border-radius: 10px;
+}
+
 .globalHeader {
   text-transform: capitalize;
   margin-top: 9px;
-  margin-left: 45px;
+  margin-left: 20px;
   margin-bottom: 0;
   font-weight: bold;
   font-size: 20px;
@@ -10753,11 +10838,11 @@ body {
 .bigTweetButton {
   background-color: #1da1f2;
   border: 2px solid #1da1f2;
-  margin-top: 40px;
+  margin-top: 17px;
   color: white;
   border-radius: 50px;
   width: 230px;
-  height: 45px;
+  height: 50px;
 }
 
 .bigTweetButton:hover {
@@ -10779,9 +10864,9 @@ body {
   height: 54px;
   background-color: #15202b;
   z-index: 5;
-  border-right: 1px solid #38444d;
-  border-left: 1px solid #38444d;
-  border-bottom: 1px solid #38444d;
+  border-right: 1px solid #3d5466;
+  border-left: 1px solid #3d5466;
+  border-bottom: 1px solid #3d5466;
 }
 
 .main .mainPlaceholder {

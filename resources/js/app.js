@@ -41,3 +41,12 @@ jQuery('#bigTweetButtonId').click(function(){
 jQuery('#showTweetComposition').click(function(){
     document.getElementById('showTweetComposition').style.display = "none";
 });
+jQuery('#moreButton').click(function(){
+    document.getElementById('bigCoverupTransparent').style.display = "block";
+    document.getElementById('sidebarDropdownMenu').style.display = "block";
+});
+jQuery('#bigCoverupTransparent').click(function(){
+    console.log("testing");
+    document.getElementById('sidebarDropdownMenu').style.display = "none";
+    document.getElementById('bigCoverupTransparent').style.display = "none";
+});
