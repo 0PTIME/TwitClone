@@ -36,10 +36,10 @@ jQuery('#ProfileUploadButton').click(function(){
 });
 
 jQuery('#bigTweetButtonId').click(function(){
-    document.getElementById('showTweetComposition').style.display = "block";
+    document.getElementById('bigCoverupOpacity').style.display = "block";
 });
-jQuery('#showTweetComposition').click(function(){
-    document.getElementById('showTweetComposition').style.display = "none";
+jQuery('#bigCoverupOpacity').click(function(){
+    document.getElementById('bigCoverupOpacity').style.display = "none";
 });
 jQuery('#moreButton').click(function(){
     document.getElementById('bigCoverupTransparent').style.display = "block";

@@ -28,6 +28,7 @@ class AssetController extends Controller
         $path = config('envars.profiles_path');
 
         $new_path = $path . $id . "profilepic.png";
+        dd(mime_content_type($new_path));
         $def_path = $path . "defPic" . $color . ".png";
 
         if(\file_exists($new_path)){

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMentionsTable extends Migration
+class CreatePollSubmitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateMentionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mentions', function (Blueprint $table) {
-            $table->integer('user_id', false, true);
-            $table->bigInteger('yap_id', false, true);
-
+        Schema::create('poll_submits', function (Blueprint $table) {
+            $table->integer('poll_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('yap_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('poll_id')->references('id')->on('polls')->onUpdate('cascade');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateMentionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mentions');
+        Schema::dropIfExists('poll_submits');
     }
 }

@@ -17,9 +17,8 @@ class CreateYapTagsTable extends Migration
             $table->bigInteger('yap_id')->unsigned();
             $table->bigInteger('hashtag_id')->unsigned();
 
-            //$table->primary(['yap_id', 'hashtag_id']);
-            $table->foreign('yap_id')->references('id')->on('hashtags');
-            $table->foreign('hashtag_id')->references('id')->on('yaps');
+            $table->foreign('yap_id')->references('id')->on('hashtags')->onUpdate('cascade');
+            $table->foreign('hashtag_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
 
