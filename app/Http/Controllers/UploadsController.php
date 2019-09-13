@@ -30,10 +30,8 @@ class UploadsController extends Controller
             $imgXOffset = intdiv($imgDiff, 2);
         }
         $img->crop($imgWidth, $imgHeight, $imgXOffset, $imgYOffset);
-        $path = config('envars.profiles_path'); // . auth()->user()->id . "profilepic.png"
+        $path = config('envars.profiles_path'). auth()->user()->id . "profilepic.png";
         $img->save($path);
-        $ext = pathinfo($path, PATHINFO_EXTENSION);
-        dd($ext);
 
 
         return back();

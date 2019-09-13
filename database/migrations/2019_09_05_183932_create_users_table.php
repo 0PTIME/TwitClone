@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->Increments('id');
 
             $table->string('name', 64);
-            $table->string('display_name', 64);
-            $table->string('description', 200);
+            $table->string('display_name', 64)->nullable();
+            $table->string('description', 200)->nullable();
             $table->string('email', 64);
             $table->string('password', 200);
 
