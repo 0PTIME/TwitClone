@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Yap;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -23,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id = auth()->user()->id;
-        return view('home');
+        $tweets = Yap::all();
+        
+        return view('home', compact('tweets'));
     }
 }

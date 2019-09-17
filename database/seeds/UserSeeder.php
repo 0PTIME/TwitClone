@@ -23,6 +23,24 @@ class UserSeeder extends Seeder
                 'password' => Hash::make(config('seed.test_password')),
                 'created_at' => Carbon::now(),
             ),
+            array(
+                'id' => '2',
+                'name' => 'kappa123',
+                'email' => 'kappa@123.com',
+                'description' => 'kappa 123',
+                'display_name' => 'Kappa',
+                'password' => Hash::make('kappa'),
+                'created_at' => Carbon::now(),
+            ),
+            array(
+                'id' => '3',
+                'name' => 'Jebaitedyou',
+                'email' => 'jebaited@lul.com',
+                'description' => 'pepeD You Got Jebaited pepeD',
+                'display_name' => 'Jebaited',
+                'password' => Hash::make('jebaited'),
+                'created_at' => Carbon::now(),
+            ),
         ]);
     }
 }

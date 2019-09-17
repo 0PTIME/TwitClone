@@ -2,13 +2,13 @@
   font-family: "Play", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #15202b;
 }
 
 body {
   color: white;
   height: 100%;
   width: 100%;
+  background-color: #15202b;
 }
 
 button {
@@ -82,22 +82,35 @@ button {
   color: #1da1f2;
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1340px) {
   .leftMain {
     float: left;
-    width: calc(46.5vw - 300px);
+    width: calc(34.5vw - 300px);
     height: 100vh;
     position: relative;
+    z-index: 3;
   }
 }
 
-@media only screen and (max-width: 1280px) and (max-width: 788px) {
+@media only screen and (max-width: 1340px) and (max-width: 1125px) {
+  .leftMain {
+    width: calc(36.8vw - 300px);
+  }
+}
+
+@media only screen and (max-width: 1340px) and (max-width: 1005px) {
+  .leftMain {
+    width: calc(48vw - 300px);
+  }
+}
+
+@media only screen and (max-width: 1340px) and (max-width: 788px) {
   .leftMain {
     width: 68px;
   }
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1340px) {
   .leftMain .leftPlaceholder {
     position: inherit;
     float: right;
@@ -117,8 +130,8 @@ button {
     float: right;
     margin-right: 10%;
     cursor: pointer;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .leftMain .leftPlaceholder .leftContentHolder .sidebarMenuContainer:hover > .sidebarMenuLinks {
@@ -159,6 +172,7 @@ button {
   }
 
   .leftMain .leftPlaceholder .leftContentHolder .bigTweetButton {
+    cursor: pointer;
     float: right;
     margin-right: 10%;
     background-color: #1da1f2;
@@ -175,11 +189,12 @@ button {
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1341px) {
   .leftMain {
     position: relative;
     float: left;
-    width: calc(46.5vw - 300px);
+    width: calc(45vw - 300px);
+    z-index: 3;
     height: 100vh;
   }
 
@@ -201,8 +216,8 @@ button {
   .leftMain .leftPlaceholder .leftContentHolder .sidebarMenuContainer {
     width: 95%;
     cursor: pointer;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 
   .leftMain .leftPlaceholder .leftContentHolder .sidebarMenuContainer:hover > .sidebarMenuLinks {
@@ -241,6 +256,7 @@ button {
 
   .leftMain .leftPlaceholder .leftContentHolder .bigTweetButton {
     background-color: #1da1f2;
+    cursor: pointer;
     border: 2px solid #1da1f2;
     margin-top: 17px;
     color: white;
@@ -296,12 +312,16 @@ button {
 }
 
 .globalHeader {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   text-transform: capitalize;
   margin-top: 9px;
   margin-left: 20px;
   margin-bottom: 0;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
+  background-color: inherit;
 }
 
 .fileUpload {
@@ -312,9 +332,30 @@ button {
   border-radius: 50%;
 }
 
+.searchBar {
+  border: none;
+  border-radius: 25px;
+  height: 50px;
+  width: 100%;
+  margin-top: 5px;
+  background-color: #202e3a;
+}
+
+.searchInput {
+  color: white;
+  border: none;
+  height: 100%;
+  border-radius: 25px;
+  background-color: #202e3a;
+  width: 90%;
+  float: right;
+}
+
 .main {
-  width: 600px;
+  width: 598px;
   display: inline-block;
+  border-right: 1px solid #3d5466;
+  border-left: 1px solid #3d5466;
 }
 
 @media only screen and (max-width: 688px) {
@@ -329,28 +370,99 @@ button {
   height: 54px;
   background-color: #15202b;
   z-index: 5;
-  border-right: 1px solid #3d5466;
-  border-left: 1px solid #3d5466;
   border-bottom: 1px solid #3d5466;
 }
 
-.main .mainPlaceholder {
+.main .tweet {
+  padding: 10px;
+  width: calc(100% - 20px);
+  display: inline-block;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 200px;
+  border-bottom: 1px solid #3d5466;
+}
+
+.main .tweet:hover {
+  background-color: #1d2734;
+}
+
+.main .tweet .showTweetImgContainer {
+  text-align: center;
+}
+
+.main .tweet .showTweetImgContainer .showTweetImg {
+  padding-left: 20vw;
+  padding-right: 20vw;
+  border-radius: 15px;
+  background-color: #403231;
+}
+
+.main .tweet .tweetHeader {
+  height: 15px;
+}
+
+.main .tweet .tweetBody {
+  margin-right: 5px;
+  margin-left: 5px;
+  width: calc(100% - 10px);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.main .tweet .tweetBody .tweetProfile {
+  margin-right: 10px;
+  width: 50px;
+  float: left;
+  height: 200px;
+}
+
+.main .tweet .tweetBody .tweetContent {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentBody {
+  width: 100%;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentBody .tweetPicture {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: calc(100% - 80px);
+  height: 250px;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.defaultPlaceholder {
   height: 54px;
   width: inherit;
   visibility: hidden;
 }
 
-@media only screen and (max-width: 1095px) {
+@media only screen and (max-width: 1125px) {
   .rightMain {
-    background-color: blue;
     display: inline-block;
-    position: fixed;
     height: 100vh;
     width: calc(50vw - 300px);
+    position: absolute;
   }
 
   .rightMain .rightPlaceholder {
-    width: 350px;
+    margin-left: 20px;
+    width: 290px;
     float: left;
   }
 
@@ -359,20 +471,21 @@ button {
   }
 
   .rightMain .rightPlaceholder .rightContentHolder .rightMainContent {
+    width: inherit;
     font-size: 25px;
   }
 }
 
-@media only screen and (min-width: 1095px) {
+@media only screen and (min-width: 1126px) {
   .rightMain {
-    background-color: antiquewhite;
     display: inline-block;
-    position: fixed;
     height: 100vh;
+    position: absolute;
     width: calc(50vw - 300px);
   }
 
   .rightMain .rightPlaceholder {
+    margin-left: 35px;
     width: 350px;
     float: left;
   }
@@ -383,6 +496,7 @@ button {
 
   .rightMain .rightPlaceholder .rightContentHolder .rightMainContent {
     font-size: 25px;
+    width: inherit;
   }
 }
 
@@ -390,5 +504,44 @@ button {
   .rightMain {
     display: none;
   }
+}
+
+.homesearch {
+  position: fixed;
+  z-index: 5;
+  width: inherit;
+  height: 50px;
+  top: 0px;
+  background-color: #15202b;
+}
+
+.twitterItem {
+  background-color: #192734;
+  margin: 5px;
+  margin-top: 20px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 15px;
+  padding-bottom: 15px;
+}
+
+.twitterItem .twitterItemContent {
+  background-color: inherit;
+  border-bottom: 1px solid #3d5466;
+  padding: 10px;
+  width: calc(inherit - 20px);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.twitterItem .twitterItemContent:hover {
+  background-color: #202e3a;
+  cursor: pointer;
+}
+
+.sticky {
+  position: fixed;
 }
 

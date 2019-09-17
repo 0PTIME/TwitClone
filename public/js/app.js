@@ -36941,7 +36941,8 @@ jQuery('.bigCoverTransparent').click(function () {
   document.getElementById('sidebarDropdownMenu').style.display = "none";
 });
 jQuery('.bigCoverOpacity').click(function () {
-  document.getElementById('bigCoverupOpacity').style.display = "none";
+  document.getElementById('bigCoverupOpacity').style.display = "none"; // document.getElementById('genericId').style.display = "none";    
+
   document.getElementById('showTweetComposition').style.display = "none";
 });
 jQuery('#moreButton').click(function () {
@@ -36951,7 +36952,28 @@ jQuery('#moreButton').click(function () {
 jQuery('#bigTweetButtonId').click(function () {
   document.getElementById('bigCoverupOpacity').style.display = "block";
   document.getElementById('showTweetComposition').style.display = "block";
-}); // jQuery('.bigCoverTransparent').click(function(){
+});
+
+function showTweetImg(id) {
+  document.getElementById('bigCoverupOpacity').style.display = "block";
+  document.getElementById('showTweetImg' + id).style.display = "block";
+}
+
+window.onscroll = function () {
+  stickyRightMain();
+};
+
+var rightMain = document.getElementById('rightMain');
+var bottomRightMain = document.getElementById('stickyId');
+var sticky = bottomRightMain.offsetTop;
+
+function stickyRightMain() {
+  if (window.pageYOffset >= sticky) {
+    rightMain.classList.add('sticky');
+  } else {
+    rightMain.classList.remove('sticky');
+  }
+} // jQuery('.bigCoverTransparent').click(function(){
 //     document.getElementById('sidebarDropdownMenu').classList.toggle('show');
 //     document.getElementById('sidebarCoverupTransparent').classList.toggle('show');
 // });

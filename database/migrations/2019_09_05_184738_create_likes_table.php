@@ -14,11 +14,11 @@ class CreateLikesTable extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
-            $table->bigInteger('yap_id')->unsigned();
+            $table->integer('users_id')->unsigned();
+            $table->bigInteger('yaps_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('yap_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('yaps_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
 

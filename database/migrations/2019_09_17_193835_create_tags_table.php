@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookmarksTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateBookmarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->bigInteger('yaps_id')->unsigned();
-            $table->integer('users_id')->unsigned();
+            $table->bigInteger('hashtags_id')->unsigned();
 
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('yaps_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('yaps_id')->references('id')->on('hashtags')->onUpdate('cascade');
+            $table->foreign('hashtags_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateBookmarksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('tags');
     }
 }

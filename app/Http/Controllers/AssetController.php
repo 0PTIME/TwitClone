@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Yap;
 use Illuminate\Http\Request;
 use Image;
 
@@ -24,7 +25,7 @@ class AssetController extends Controller
     }
 
     public function profilePic($id, $size = 25){
-        if(!isset($id)){ $id = auth()->user()->id; }
+        if(!isset($id)){ $id = "bogus"; }
         $path = config('envars.profiles_path') . $id . "profilepic.png";
         $def_path = config('envars.profiles_path') . "defPicWhite.png";
         if(file_exists($path)){
@@ -34,5 +35,15 @@ class AssetController extends Controller
             return Image::make($def_path)->fit($size)->response();
         }
         return \response()->json(null);
+    }
+    public function tweetMedia($id){
+        $tweet = Yap::find($id);
+        if($tweet->media){
+            $path = config('envars.tweet_media_path') . $tweet->media;
+            if(file_exists($path)){
+                return Image::make($path)->response();
+            }
+            return \response()->json(null);
+        }
     }
 }

@@ -17,8 +17,9 @@ class CreateYapsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('users_id')->unsigned();
             $table->string('content');
-            $table->bigInteger('retweet_of')->unsigned();
-            $table->bigInteger('reply_of')->unsigned();
+            $table->string('media', 100)->nullable();
+            $table->bigInteger('retweet_of')->unsigned()->nullable();
+            $table->bigInteger('reply_of')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
 

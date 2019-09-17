@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookmarksTable extends Migration
+class CreateMediaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateBookmarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
+        Schema::create('media', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('yaps_id')->unsigned();
-            $table->integer('users_id')->unsigned();
+            $table->string('file_name', 64);
 
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade');
             $table->foreign('yaps_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
@@ -29,6 +29,6 @@ class CreateBookmarksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('media');
     }
 }

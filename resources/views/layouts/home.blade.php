@@ -7,13 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Yapper') }}</title>
+    <title>@yield('pageTitle')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="favicon.ico" rel="icon" type="image/ico">
 </head>
 
 <body>
@@ -41,7 +42,11 @@
                     <div class="tweetCompositionMain">
                         <div class="tweetCompostisionMainPlaceholder">
                             <div class="tweetMainCompositionArea">
-        
+                                <form action="{{ route('submitTweet')  }}" method="post">
+                                    @csrf
+                                    <input type="text" placeholder="Enter Your Tweet Here..." required>
+                                    <input type="submit">
+                                </form>
                             </div>
                             <div class="tweetCompFooter">
         
@@ -126,7 +131,7 @@
                     <input type="file" name="image" id="ProfileInputFile" onchange="form.submit()" class="fileUpload">
                     <div class="sidebarMenuContainer" id="ProfileUploadButton">
                         <div type="button" class="sidebarMenuLinks">
-                            <img class="miniProfilePic sidebarMenuElements" src="{{ url('/asset/' . Auth::user()->id . '/pic') }}" class="miniProfilePic">
+                            <img class="miniProfilePic sidebarMenuElements" src="{{ route('profilePic', ['id' => auth()->user()->id]) }}" class="miniProfilePic">
                             <span class="sidebarMenuElements spanThingy">Profile</span>
                         </div>
                     </div>
@@ -155,21 +160,63 @@
     </div>
     <div class="main">
         <div class="mainHeader">
-            <p class="globalHeader">{{ Route::currentRouteName() }}</p>
+            <p class="globalHeader">@yield('pageHeader')</p>
         </div>
-        <div class="mainPlaceholder"></div>
+        <div class="defaultPlaceholder"></div>
         @yield('content')
     </div>
     <div class="rightMain">
         <div class="rightPlaceholder">
-            <div class="rightContentholder">
-                <div class="rightMainContent">
+            <div class="rightContentHolder">
+                <div class="rightMainContent" id="rightMain">
                     <div class="homesearch">
-                        <form action="search" method="GET">
-                            <input type="text" class="searchBar" name="keyword" autocomplete="off">
-                            <input type="submit" value="Search">
+                        <form action="search" class="searchBar" method="GET">
+                            <input type="text" class="searchInput" name="keyword" autocomplete="off" placeholder="Seach Yapper">
                         </form>
                     </div>
+                    <div class="defaultPlaceholder"></div>
+                    <div class="twitterItem">
+                        <h1 class="globalHeader">TRENDING</h1>
+                        <div class="twitterItemContent"></div>
+                        <div class="twitterItemContent">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie eros vel vehicula rutrum.
+                        </div>
+                        <div class="twitterItemContent">
+                            Duis a tincidunt orci. Ut et diam ut ipsum aliquam dignissim a id tellus.
+                        </div>
+                        <div class="twitterItemContent">
+                            Sed id vestibulum nisl, eu convallis quam.
+                        </div>
+                        <div class="twitterItemContent">
+                            Cras id tincidunt lectus. Phasellus cursus ullamcorper sodales. Vestibulum diam nisl, egestas sed odio eget, tempor varius tellus. Vestibulum eu neque at tellus tristique volutpat. Proin vel mattis tellus, eget pellentesque sem. Pellentesque vitae lorem pulvinar, sollicitudin libero id, finibus sapien.
+                        </div>
+                        <div class="twitterItemContent">
+                            Suspendisse ligula orci, rutrum ut mollis non, commodo ut ligula.
+                        </div>
+                        <div class="twitterItemContent">
+                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                        </div>
+                    </div>
+                    <div class="twitterItem">
+                        <h1 class="globalHeader">RECOMENDATIONS</h1>
+                        <div class="twitterItemContent"></div>
+                        <div class="twitterItemContent">
+                            Aliquam sed congue ipsum.
+                        </div>
+                        <div class="twitterItemContent">
+                            In quis vestibulum purus.
+                        </div>
+                        <div class="twitterItemContent">
+                            Donec lectus dui, cursus eu hendrerit non, condimentum vel tortor.
+                        </div>
+                        <div class="twitterItemContent">
+                            Pellentesque ut nunc eleifend, varius est non, facilisis justo.
+                        </div>
+                        <div class="twitterItemContent">
+                            Aenean vitae nunc in mi pulvinar egestas.
+                        </div>
+                    </div>
+                    <div id="stickyId"></div>
                 </div>
             </div>
         </div>

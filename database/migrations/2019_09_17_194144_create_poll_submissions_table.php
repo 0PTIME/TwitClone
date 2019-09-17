@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookmarksTable extends Migration
+class CreatePollSubmissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateBookmarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookmarks', function (Blueprint $table) {
-            $table->bigInteger('yaps_id')->unsigned();
+        Schema::create('poll_submissions', function (Blueprint $table) {
+            $table->integer('polls_id')->unsigned();
             $table->integer('users_id')->unsigned();
+            $table->tinyInteger('option')->unsigned();
 
             $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('yaps_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('polls_id')->references('id')->on('polls')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateBookmarksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookmarks');
+        Schema::dropIfExists('poll_submissions');
     }
 }

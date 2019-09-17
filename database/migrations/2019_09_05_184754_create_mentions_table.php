@@ -14,12 +14,12 @@ class CreateMentionsTable extends Migration
     public function up()
     {
         Schema::create('mentions', function (Blueprint $table) {
-            $table->integer('user_id', false, true);
-            $table->bigInteger('yap_id', false, true);
+            $table->integer('users_id', false, true);
+            $table->bigInteger('yaps_id', false, true);
 
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('yap_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('yaps_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
 
