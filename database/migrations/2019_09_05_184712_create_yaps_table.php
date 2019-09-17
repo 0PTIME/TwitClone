@@ -15,7 +15,7 @@ class CreateYapsTable extends Migration
     {
         Schema::create('yaps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('users_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('content');
             $table->string('media', 100)->nullable();
             $table->bigInteger('retweet_of')->unsigned()->nullable();
@@ -23,7 +23,7 @@ class CreateYapsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->foreign('retweet_of')->references('id')->on('yaps')->onUpdate('cascade');
             $table->foreign('reply_of')->references('id')->on('yaps')->onUpdate('cascade');
         });

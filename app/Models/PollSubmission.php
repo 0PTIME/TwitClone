@@ -12,10 +12,10 @@ class PollSubmission extends Model
 
 
     public function poll(){
-        return $this->hasOne('App\Models\Poll');
+        return $this->belongsTo('App\Models\Poll');
     }
 
     public function user(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 }

@@ -13,7 +13,7 @@ class Poll extends Model
 
 
     public function yap(){
-        return $this->hasOne('App\Models\Yap');
+        return $this->belongsTo('App\Models\Yap');
     }
 
     public function submits(){

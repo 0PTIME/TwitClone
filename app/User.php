@@ -55,7 +55,7 @@ class User extends Authenticatable
     }
 
     public function mentions(){
-        return $this->hasMany('App\Models\Mention');
+        return $this->belongsToMany('App\Models\Mention');
     }
 
     public function pollSubmissions(){
@@ -66,11 +66,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\List');
     }
 
-    public function listsSubsribed(){
+    public function listSubsrcriptions(){
         return $this->hasMany('App\Models\ListSubscription');
     }
 
     public function listsMember(){
-        return $this->hasMany('App\Models\ListMember');
+        return $this->belongsTo('App\Models\ListMember');
     }
 }

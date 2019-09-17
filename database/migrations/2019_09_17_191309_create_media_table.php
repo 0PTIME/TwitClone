@@ -15,10 +15,10 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('yaps_id')->unsigned();
+            $table->bigInteger('yap_id')->unsigned();
             $table->string('file_name', 64);
 
-            $table->foreign('yaps_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('yap_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
 

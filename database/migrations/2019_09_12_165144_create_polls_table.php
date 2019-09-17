@@ -15,13 +15,13 @@ class CreatePollsTable extends Migration
     {
         Schema::create('polls', function (Blueprint $table) {
             $table->Increments('id');
-            $table->bigInteger('yaps_id')->unsigned();
+            $table->bigInteger('yap_id')->unsigned();
             $table->string('option_one', 45);
             $table->string('option_two', 45);
             $table->string('option_three', 45);
             $table->string('option_four', 45);
 
-            $table->foreign('yaps_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('yap_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
 

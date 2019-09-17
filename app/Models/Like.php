@@ -10,10 +10,10 @@ class Like extends Model
     
     
     public function user(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function yap(){
-        return $this->hasOne('App\Models\Yap');
+        return $this->belongsTo('App\Models\Yap');
     }
 }

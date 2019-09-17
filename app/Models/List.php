@@ -10,7 +10,7 @@ class List extends Model
     
 
     public function owner(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function members(){
@@ -18,6 +18,6 @@ class List extends Model
     }
 
     public function subscribers(){
-        return $this->hasOne('App\Models\ListSubscriber');
+        return $this->hasMany('App\Models\ListSubscriber');
     }
 }

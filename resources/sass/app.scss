@@ -33,12 +33,12 @@ button{
         display: inline-block;
         .tweetCompHeaderBar{
             width: 100%;
-            height: 54px;
+            height: 55px;
             border-bottom: 1px solid $twitterBorder
         }
         .tweetCompMainContent{
             width: 100%;
-            height: calc(100% - 54px);
+            height: calc(100% - 55px);
             .tweetCompMainContentPlaceholder{
                 height: 100%;
                 padding-left: 15px;
@@ -222,6 +222,24 @@ button{
         }
     }
 }
+.tweetOwnerName{
+    cursor: pointer;
+    color: $twitterGrayText;
+    display: inline-block;
+    margin-bottom: 1px;
+    &:hover > .tweetOwnerDisplayName{
+        text-decoration: underline;
+    }
+    .tweetOwnerDisplayName{
+        padding-right: 8px;
+        display: inline-block;
+        color: white;
+        font-weight: bold;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
 .show{
     display: none;
 }
@@ -302,17 +320,17 @@ button{
     .mainHeader{
         position: fixed;
         width: inherit;
-        height: 54px;
+        height: 55px;
         background-color: $twitterDark;
         z-index: 5;
         border-bottom: 1px solid $twitterBorder;
     }
     .tweet{
+        cursor: pointer;
         padding: 10px;
         width: calc(100% - 20px);
-        display: inline-block;
+        display: flex;
         height: fit-content;
-        min-height: 200px;
         border-bottom: 1px solid $twitterBorder;
         &:hover{
             background-color: $twitterHighlight;
@@ -338,10 +356,10 @@ button{
                 margin-right: 10px;
                 width: 50px;
                 float: left;
-                height: 200px;
             }
             .tweetContent{
-                width: 100%;
+                float: right;
+                width: calc(100% - 60px);
                 height: fit-content;
                 .tweetContentBody{
                     width: 100%;
@@ -357,14 +375,23 @@ button{
                 }
                 .tweetContentFooter{
                     margin-top: 10px;
+                    height: 50px;
                     width: 100%;
                 }
             }
         }
     }
 }
+.timeForHumans{
+    cursor: pointer;
+    color: $twitterGrayText;
+    display: inline-block;
+    &:hover{
+        text-decoration: underline;
+    }
+}
 .defaultPlaceholder{
-    height: 54px;
+    height: 55px;
     width: inherit;
     visibility: hidden;
 }

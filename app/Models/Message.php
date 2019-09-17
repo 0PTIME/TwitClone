@@ -12,7 +12,7 @@ class Message extends Model
 
 
     public function sender(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
 

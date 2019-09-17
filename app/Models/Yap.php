@@ -16,7 +16,7 @@ class Yap extends Model
     }
 
     public function user(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 
     public function tags(){
@@ -32,10 +32,18 @@ class Yap extends Model
     }
 
     public function bookmarks(){
-        return $this->hasMany('App\Models\Bookmark');
+        return $this->belongsToMany('App\Models\Bookmark');
     }
 
     public function poll(){
         return $this->hasOne('App\Models\Poll');
+    }
+
+    public function retweetOf(){
+        return $this->hasOne('App\Models\Yap');
+    }
+
+    public function replyOf(){
+        return $this->belongsTo('App\Models\Yap');
     }
 }

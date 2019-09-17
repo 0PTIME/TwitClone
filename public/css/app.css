@@ -34,13 +34,13 @@ button {
 
 .tweetCompMain .tweetCompMainPlaceholder .tweetCompHeaderBar {
   width: 100%;
-  height: 54px;
+  height: 55px;
   border-bottom: 1px solid #3d5466;
 }
 
 .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent {
   width: 100%;
-  height: calc(100% - 54px);
+  height: calc(100% - 55px);
 }
 
 .tweetCompMain .tweetCompMainPlaceholder .tweetCompMainContent .tweetCompMainContentPlaceholder {
@@ -270,6 +270,28 @@ button {
   }
 }
 
+.tweetOwnerName {
+  cursor: pointer;
+  color: #687784;
+  display: inline-block;
+  margin-bottom: 1px;
+}
+
+.tweetOwnerName:hover > .tweetOwnerDisplayName {
+  text-decoration: underline;
+}
+
+.tweetOwnerName .tweetOwnerDisplayName {
+  padding-right: 8px;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+}
+
+.tweetOwnerName .tweetOwnerDisplayName:hover {
+  text-decoration: underline;
+}
+
 .show {
   display: none;
 }
@@ -338,7 +360,7 @@ button {
   height: 50px;
   width: 100%;
   margin-top: 5px;
-  background-color: #202e3a;
+  background-color: #253341;
 }
 
 .searchInput {
@@ -346,7 +368,7 @@ button {
   border: none;
   height: 100%;
   border-radius: 25px;
-  background-color: #202e3a;
+  background-color: #253341;
   width: 90%;
   float: right;
 }
@@ -367,20 +389,20 @@ button {
 .main .mainHeader {
   position: fixed;
   width: inherit;
-  height: 54px;
+  height: 55px;
   background-color: #15202b;
   z-index: 5;
   border-bottom: 1px solid #3d5466;
 }
 
 .main .tweet {
+  cursor: pointer;
   padding: 10px;
   width: calc(100% - 20px);
-  display: inline-block;
+  display: flex;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: 200px;
   border-bottom: 1px solid #3d5466;
 }
 
@@ -416,11 +438,11 @@ button {
   margin-right: 10px;
   width: 50px;
   float: left;
-  height: 200px;
 }
 
 .main .tweet .tweetBody .tweetContent {
-  width: 100%;
+  float: right;
+  width: calc(100% - 60px);
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -443,11 +465,22 @@ button {
 
 .main .tweet .tweetBody .tweetContent .tweetContentFooter {
   margin-top: 10px;
+  height: 50px;
   width: 100%;
 }
 
+.timeForHumans {
+  cursor: pointer;
+  color: #687784;
+  display: inline-block;
+}
+
+.timeForHumans:hover {
+  text-decoration: underline;
+}
+
 .defaultPlaceholder {
-  height: 54px;
+  height: 55px;
   width: inherit;
   visibility: hidden;
 }

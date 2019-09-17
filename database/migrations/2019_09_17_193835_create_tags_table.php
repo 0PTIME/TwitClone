@@ -14,11 +14,11 @@ class CreateTagsTable extends Migration
     public function up()
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->bigInteger('yaps_id')->unsigned();
-            $table->bigInteger('hashtags_id')->unsigned();
+            $table->bigInteger('yap_id')->unsigned();
+            $table->bigInteger('hashtag_id')->unsigned();
 
-            $table->foreign('yaps_id')->references('id')->on('hashtags')->onUpdate('cascade');
-            $table->foreign('hashtags_id')->references('id')->on('yaps')->onUpdate('cascade');
+            $table->foreign('yap_id')->references('id')->on('hashtags')->onUpdate('cascade');
+            $table->foreign('hashtag_id')->references('id')->on('yaps')->onUpdate('cascade');
         });
     }
 

@@ -11,7 +11,7 @@ class ListSubscription extends Model
     
 
     public function list(){
-        return $this->hasOne('App\Models\List');
+        return $this->belongsTo('App\Models\List');
     }
 
 

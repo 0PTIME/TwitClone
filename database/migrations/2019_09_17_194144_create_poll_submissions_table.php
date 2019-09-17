@@ -14,12 +14,12 @@ class CreatePollSubmissionsTable extends Migration
     public function up()
     {
         Schema::create('poll_submissions', function (Blueprint $table) {
-            $table->integer('polls_id')->unsigned();
-            $table->integer('users_id')->unsigned();
+            $table->integer('poll_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->tinyInteger('option')->unsigned();
 
-            $table->foreign('users_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreign('polls_id')->references('id')->on('polls')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('poll_id')->references('id')->on('polls')->onUpdate('cascade');
         });
     }
 
