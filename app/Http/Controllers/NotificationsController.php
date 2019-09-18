@@ -11,6 +11,6 @@ class NotificationsController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        return view('home');
+        return view('notifications');
     }
 }

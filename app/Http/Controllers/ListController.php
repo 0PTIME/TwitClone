@@ -11,6 +11,6 @@ class ListController extends Controller
         $this->middleware('auth');
     }
     public function index($id){
-        return view('home');
+        return view('lists');
     }
 }

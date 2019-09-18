@@ -30,7 +30,7 @@ Route::post('/submitTweet', 'TweetController@submitTweet')->name('submitTweet');
 Route::post('/pfupload', 'UploadsController@pfupload')->name('profileUpload.post');
 
 Route::prefix('asset')->group(function(){
-    Route::get('icon/{name}/{color?}/{size?}', 'AssetController@icon')->name('icon');
+    Route::get('icon/{name}/{state?}/{size?}', 'AssetController@icon')->name('icon');
     Route::get('{id}/pic/{size?}', 'AssetController@profilePic')->name('profilePic');
     Route::get('tweet/{id}', 'AssetController@tweetMedia')->name('tweetMedia');
 });

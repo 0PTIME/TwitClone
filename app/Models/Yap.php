@@ -46,4 +46,12 @@ class Yap extends Model
     public function replyOf(){
         return $this->belongsTo('App\Models\Yap');
     }
+
+    public function replies(){
+        return $this->hasMany('App\Models\Yap', 'reply_of');
+    }
+
+    public function retweets(){
+        return $this->belongsTo('App\Models\Yap', 'retweet_of');
+    }
 }

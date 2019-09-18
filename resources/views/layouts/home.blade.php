@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('pageTitle')</title>
+    <title>Yapper | @yield('pageTitle')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -63,66 +63,42 @@
                 <div class="bigCoverTransparent show" id="sidebarCoverupTransparent"></div>
                 <div class="sidebarMenuContainer" onclick="location.href='{{ route('home') }}'">
                     <div class="sidebarMenuLinks">
-                        <img class="sidebarMenuElements" src="{{ url('/asset/icon/dog/White') }}">
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'dog']) }}">
                     </div>
                 </div>
                 <div class="sidebarMenuContainer" onclick="location.href='{{ route('home') }}'">
                     <div class="sidebarMenuLinks">
-                        @if (Route::currentRouteName() == "home")
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/home/Blue') }}">
-                        @else
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/home/White') }}">
-                        @endif
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'home', 'state' => Route::currentRouteName() === "home" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "home" ? 'colorBlue' : ''}}">Home</span>
                     </div>
                 </div>
                 <div class="sidebarMenuContainer" onclick="location.href='{{ route('explore') }}'">
                     <div class="sidebarMenuLinks">
-                        @if (Route::currentRouteName() == "explore")
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/hashtag/Blue') }}">
-                        @else
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/hashtag/White') }}">
-                        @endif
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'hashtag', 'state' => Route::currentRouteName() === "explore" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "explore" ? 'colorBlue' : ''}}">Explore</span>
                     </div>
                 </div>
                 <div class="sidebarMenuContainer" onclick="location.href='{{ route('notifications') }}'">
                     <div class="sidebarMenuLinks">                    
-                        @if (Route::currentRouteName() == "notifications")
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/bell/Blue') }}">
-                        @else
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/bell/White') }}">
-                        @endif
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bell', 'state' => Route::currentRouteName() === "notifications" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "notifications" ? 'colorBlue' : ''}}">Notifications</span>
                     </div>
                 </div>
                 <div class="sidebarMenuContainer" onclick="location.href='{{ route('messages') }}'">
                     <div class="sidebarMenuLinks">
-                        @if (Route::currentRouteName() == "messages")
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/envelope/Blue') }}">
-                        @else
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/envelope/White') }}">
-                        @endif
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'envelope', 'state' => Route::currentRouteName() === "messages" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "messages" ? 'colorBlue' : ''}}">Messages</span>
                     </div>
                 </div>
                 <div class="sidebarMenuContainer" onclick="location.href='{{ route('bookmarks', ['id' => auth()->user()->id]) }}'">
                     <div class="sidebarMenuLinks">                    
-                        @if (Route::currentRouteName() == "bookmarks")
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/bookmark/Blue') }}">
-                        @else
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/bookmark/White') }}">
-                        @endif
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bookmark', 'state' => Route::currentRouteName() === "bookmarks" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "bookmarks" ? 'colorBlue' : ''}}">Bookmarks</span>
                     </div>
                 </div>
                 <div class="sidebarMenuContainer" onclick="location.href='{{ route('lists', ['id' => auth()->user()->id]) }}'">
                     <div class="sidebarMenuLinks">                    
-                        @if (Route::currentRouteName() == "lists")
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/page/Blue') }}">
-                        @else
-                            <img class="sidebarMenuElements" src="{{ url('/asset/icon/page/White') }}">
-                        @endif
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'page', 'state' => Route::currentRouteName() === "lists" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "lists" ? 'colorBlue' : ''}}">Lists</span>
                     </div>
                 </div>
@@ -138,7 +114,7 @@
                 </form>
                 <div class="sidebarMenuContainer" id="moreButton">
                     <div class="sidebarMenuLinks">
-                        <img class="sidebarMenuElements" src="{{ url('/asset/icon/menu/White') }}">
+                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'menu']) }}">
                         <span class="sidebarMenuElements spanThingy">More</span>
                     </div>
                     <div class="dropdown-content show" id="sidebarDropdownMenu">

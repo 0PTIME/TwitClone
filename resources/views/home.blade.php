@@ -5,7 +5,7 @@
 @endsection
 
 @section('pageTitle')
-    Yapper | Home
+    Home
 @endsection
 
 @section('content')
@@ -14,7 +14,6 @@
             document.getElementById('tweetCoverId').style.display = "block";
             document.getElementById(id).style.display = "block";
         }
-
         window.onclick = function(event){
             var classes = event.toElement.classList;
             if(classes.contains('bigCoverTransparent')){
@@ -41,7 +40,7 @@
             @endif
             @if ($tweet->reply_of !== null)
                 <div class="tweetHeader" style="font-size: 13px;">
-                    <div class="tweetOwnerName">{{ $tweet->user->display_name }} Retweeted</div>
+                    <div class="tweetOwnerName">{{ $tweet->user->display_name }} Replied</div>
                 </div>
             @endif
             @if ($tweet->reply_of === null && $tweet->retweet_of === null)
@@ -56,7 +55,7 @@
                             </div>
                             <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }} · </div>
                         </div>
-                        <div class="timeForHumans">{{ $tweet->created_at->diffForHumans() }}</div>
+                    <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
                         <div class="downArrWrapper" onclick="showDropdownMenu('{{ $tweet->id }}dropdown')">
                             <div class="downArr"><img src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
                             <div>
@@ -82,7 +81,29 @@
                             @endif
                         </div>
                         <div class="tweetContentFooter">
-    
+                            <div class="tweetFooterItem">
+                                <div class="tweetFooterIconWrapper">
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'comment', 'color' => 'Black', 'size' => '18']) }}">
+                                    <span class="tweetFooterNum">{{ $tweet->replies_count === 0 ? '' : $tweet->replies_count }}</span>
+                                </div>
+                            </div>
+                            <div class="tweetFooterItem">
+                                <div class="tweetFooterGreenIconWrapper">
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'retweet', 'color' => 'Black', 'size' => '18']) }}">
+                                    <span class="tweetFooterNum">{{ $tweet->retweets_count === 0 ? '' : $tweet->retweets_count }}</span>
+                                </div>
+                            </div>
+                            <div class="tweetFooterItem">
+                                <div class="tweetFooterRedIconWrapper">
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'heart', 'color' => 'Black', 'size' => '18']) }}">
+                                    <span class="tweetFooterNum">{{ $tweet->likes_count === 0 ? '' : $tweet->likes_count }}</span>
+                                </div>
+                            </div>
+                            <div class="tweetFooterItem">
+                                <div class="tweetFooterIconWrapper">
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'upload', 'color' => 'Black', 'size' => '18']) }}">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

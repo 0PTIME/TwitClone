@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tweets = Yap::all();
+        $tweets = Yap::withCount(['replies', 'retweets', 'likes'])->get();
         
         return view('home', compact('tweets'));
     }

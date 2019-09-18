@@ -117,8 +117,8 @@ button{
                         width: fit-content;
                         padding-right: 10px;
                         padding-left: 10px;
-                        padding-top: 6px;
-                        padding-bottom: 6px;
+                        padding-top: 3px;
+                        padding-bottom: 3px;
                         &:hover{
                             border-radius: 35px;
                             background-color: $twitterBlueHighlight;
@@ -188,8 +188,8 @@ button{
                         width: fit-content;
                         padding-right: 10px;
                         padding-left: 10px;
-                        padding-top: 6px;
-                        padding-bottom: 6px;
+                        padding-top: 3px;
+                        padding-bottom: 3px;
                         &:hover{
                             border-radius: 35px;
                             background-color: $twitterBlueHighlight;
@@ -327,7 +327,9 @@ button{
     }
     .tweet{
         cursor: pointer;
-        padding: 10px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-right: 10px;
         width: calc(100% - 20px);
         display: flex;
         height: fit-content;
@@ -365,7 +367,6 @@ button{
                     width: 100%;
                     .tweetPicture{
                         margin-top: 15px;
-                        margin-bottom: 15px;
                         width: 100%;
                         height: 250px;
                         border-radius: 12px;
@@ -374,9 +375,64 @@ button{
                     }
                 }
                 .tweetContentFooter{
-                    margin-top: 10px;
-                    height: 50px;
+                    margin-top: 5px;
+                    height: 40px;
                     width: 100%;
+                    .tweetFooterItem{
+                        display: inline-block;
+                        margin-right: calc(20% - 35px);
+                        .tweetFooterIconWrapper{
+                            width: 36px;
+                            height: 36px;
+                            &:hover{
+                                border-radius: 50%;
+                                background-color: $twitterBlueHighlight;
+                            }
+                            .tweetFooterIcon{
+                                margin: 9px;
+                            }
+                            .tweetFooterNum{
+                                height: 18px;
+                                position: absolute;
+                                color: $twitterFooterText;
+                                padding: 9px;
+                            }
+                        }
+                        .tweetFooterGreenIconWrapper{
+                            width: 36px;
+                            height: 36px;
+                            &:hover{
+                                border-radius: 50%;
+                                background-color: $twitterGreenHover;
+                            }
+                            .tweetFooterIcon{
+                                margin: 9px;
+                            }
+                            .tweetFooterNum{
+                                height: 18px;
+                                position: absolute;
+                                color: $twitterFooterText;
+                                padding: 9px;
+                            }
+                        }
+                        .tweetFooterRedIconWrapper{
+                            width: 36px;
+                            height: 36px;
+                            &:hover{
+                                border-radius: 50%;
+                                background-color: $twitterRedHover;
+                            }
+                            .tweetFooterIcon{
+                                margin: 9px;
+                            }
+                            .tweetFooterNum{
+                                height: 18px;
+                                position: absolute;
+                                color: $twitterFooterText;
+                                padding: 9px;
+                            }
+                        }
+                    }
                 }
             }
         }

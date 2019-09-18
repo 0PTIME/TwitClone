@@ -136,7 +136,7 @@ button {
 
   .leftMain .leftPlaceholder .leftContentHolder .sidebarMenuContainer:hover > .sidebarMenuLinks {
     border-radius: 35px;
-    background-color: #162d40;
+    background-color: rgba(29, 161, 242, 0.1);
     color: #1da1f2;
   }
 
@@ -149,13 +149,13 @@ button {
     width: fit-content;
     padding-right: 10px;
     padding-left: 10px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
 
   .leftMain .leftPlaceholder .leftContentHolder .sidebarMenuContainer .sidebarMenuLinks:hover {
     border-radius: 35px;
-    background-color: #162d40;
+    background-color: rgba(29, 161, 242, 0.1);
     color: #1da1f2;
   }
 
@@ -185,7 +185,7 @@ button {
   }
 
   .leftMain .leftPlaceholder .leftContentHolder .bigTweetButton:hover {
-    border: 2px solid #162d40;
+    border: 2px solid rgba(29, 161, 242, 0.1);
   }
 }
 
@@ -222,7 +222,7 @@ button {
 
   .leftMain .leftPlaceholder .leftContentHolder .sidebarMenuContainer:hover > .sidebarMenuLinks {
     border-radius: 35px;
-    background-color: #162d40;
+    background-color: rgba(29, 161, 242, 0.1);
     color: #1da1f2;
   }
 
@@ -235,13 +235,13 @@ button {
     width: fit-content;
     padding-right: 10px;
     padding-left: 10px;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
 
   .leftMain .leftPlaceholder .leftContentHolder .sidebarMenuContainer .sidebarMenuLinks:hover {
     border-radius: 35px;
-    background-color: #162d40;
+    background-color: rgba(29, 161, 242, 0.1);
     color: #1da1f2;
   }
 
@@ -266,7 +266,7 @@ button {
   }
 
   .leftMain .leftPlaceholder .leftContentHolder .bigTweetButton:hover {
-    border: 2px solid #162d40;
+    border: 2px solid rgba(29, 161, 242, 0.1);
   }
 }
 
@@ -397,7 +397,9 @@ button {
 
 .main .tweet {
   cursor: pointer;
-  padding: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
   width: calc(100% - 20px);
   display: flex;
   height: -webkit-fit-content;
@@ -454,7 +456,6 @@ button {
 
 .main .tweet .tweetBody .tweetContent .tweetContentBody .tweetPicture {
   margin-top: 15px;
-  margin-bottom: 15px;
   width: 100%;
   height: 250px;
   border-radius: 12px;
@@ -464,9 +465,77 @@ button {
 }
 
 .main .tweet .tweetBody .tweetContent .tweetContentFooter {
-  margin-top: 10px;
-  height: 50px;
+  margin-top: 5px;
+  height: 40px;
   width: 100%;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem {
+  display: inline-block;
+  margin-right: calc(20% - 35px);
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterIconWrapper {
+  width: 36px;
+  height: 36px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterIconWrapper:hover {
+  border-radius: 50%;
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterIconWrapper .tweetFooterIcon {
+  margin: 9px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterIconWrapper .tweetFooterNum {
+  height: 18px;
+  position: absolute;
+  color: #7a8a96;
+  padding: 9px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterGreenIconWrapper {
+  width: 36px;
+  height: 36px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterGreenIconWrapper:hover {
+  border-radius: 50%;
+  background-color: rgba(23, 191, 99, 0.1);
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterGreenIconWrapper .tweetFooterIcon {
+  margin: 9px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterGreenIconWrapper .tweetFooterNum {
+  height: 18px;
+  position: absolute;
+  color: #7a8a96;
+  padding: 9px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterRedIconWrapper {
+  width: 36px;
+  height: 36px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterRedIconWrapper:hover {
+  border-radius: 50%;
+  background-color: rgba(224, 36, 94, 0.1);
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterRedIconWrapper .tweetFooterIcon {
+  margin: 9px;
+}
+
+.main .tweet .tweetBody .tweetContent .tweetContentFooter .tweetFooterItem .tweetFooterRedIconWrapper .tweetFooterNum {
+  height: 18px;
+  position: absolute;
+  color: #7a8a96;
+  padding: 9px;
 }
 
 .timeForHumans {
@@ -490,7 +559,7 @@ button {
 
 .downArrWrapper:hover {
   border-radius: 50%;
-  background-color: #162d40;
+  background-color: rgba(29, 161, 242, 0.1);
 }
 
 .downArrWrapper .downArr {
