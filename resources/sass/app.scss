@@ -131,7 +131,6 @@ button{
                             vertical-align: middle;
                             margin: 5px;
                             font-size: 18px;
-                            background-color: inherit;
                             font-weight: 700;
                         }
                     }
@@ -199,7 +198,6 @@ button{
                             vertical-align: middle;
                             margin: 5px;
                             font-size: 18px;
-                            background-color: inherit;
                             display: inline-block;
                             font-weight: 700;
                         }
@@ -295,7 +293,7 @@ button{
 .searchBar{
     border:none;
     border-radius: 25px;
-    height: 50px;
+    height: inherit;
     width: 100%;
     margin-top: 5px;
     background-color: $twitterSearchBar;
@@ -328,7 +326,6 @@ button{
     .tweet{
         cursor: pointer;
         padding-left: 10px;
-        padding-top: 10px;
         padding-right: 10px;
         width: calc(100% - 20px);
         display: flex;
@@ -347,12 +344,36 @@ button{
             }
         }
         .tweetHeader{
-            height: 15px;
+            font-size: 12px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            .tweetHeaderPicWrapper{
+                margin-right: 5px;
+                margin-left: 5px;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                width: 50px;
+                float: left;
+                .tweetHeaderPic{
+                    float: right;
+                }
+            }
+            .tweetOwnerName{
+                text-decoration: none;
+                float: right;
+                margin-right: 5px;
+                margin-left: 5px;
+                margin-top: 2px;
+                margin-bottom: 2px;
+                width: calc(100% - 70px);
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
         }
         .tweetBody{
-            margin-right: 5px;
-            margin-left: 5px;
-            width: calc(100% - 10px);
+            width: 100%;
+            padding-top: 10px;
             height: fit-content;
             .tweetProfile{
                 margin-right: 10px;
@@ -384,6 +405,7 @@ button{
                         .tweetFooterIconWrapper{
                             width: 36px;
                             height: 36px;
+                            color: $twitterFooterText;
                             &:hover{
                                 border-radius: 50%;
                                 background-color: $twitterBlueHighlight;
@@ -394,13 +416,13 @@ button{
                             .tweetFooterNum{
                                 height: 18px;
                                 position: absolute;
-                                color: $twitterFooterText;
                                 padding: 9px;
                             }
                         }
                         .tweetFooterGreenIconWrapper{
                             width: 36px;
                             height: 36px;
+                            color: $twitterFooterText;
                             &:hover{
                                 border-radius: 50%;
                                 background-color: $twitterGreenHover;
@@ -411,13 +433,13 @@ button{
                             .tweetFooterNum{
                                 height: 18px;
                                 position: absolute;
-                                color: $twitterFooterText;
                                 padding: 9px;
                             }
                         }
                         .tweetFooterRedIconWrapper{
                             width: 36px;
                             height: 36px;
+                            color: $twitterFooterText;
                             &:hover{
                                 border-radius: 50%;
                                 background-color: $twitterRedHover;
@@ -428,7 +450,6 @@ button{
                             .tweetFooterNum{
                                 height: 18px;
                                 position: absolute;
-                                color: $twitterFooterText;
                                 padding: 9px;
                             }
                         }
@@ -518,7 +539,7 @@ button{
     position: fixed;
     z-index: 5;
     width: inherit;
-    height: 50px;
+    height: 40px;
     top: 0px;
     background-color: $twitterDark;
 }
@@ -546,4 +567,11 @@ button{
 
 .sticky{
     position: fixed;
+}
+
+.greenText{
+    color: $twitterGreenText;
+}
+.redText{
+    color: $twitterRedText;
 }

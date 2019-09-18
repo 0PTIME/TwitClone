@@ -11,6 +11,6 @@ class Hashtag extends Model
 
 
     public function tags(){
-        return $this->belongsToMany('App\Models\Tag');
+        return $this->belongsTo('App\Models\Tag');
     }
 }

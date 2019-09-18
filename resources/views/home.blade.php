@@ -34,13 +34,19 @@
                 </div>
             </div>
             @if ($tweet->retweet_of !== null)
-                <div class="tweetHeader" style="font-size: 13px;">
-                    <div class="tweetOwnerName">{{ $tweet->user->display_name }} Retweeted</div>
+                <div class="tweetHeader">
+                    <div class="tweetHeaderPicWrapper">
+                        <img class="tweetHeaderPic" src="{{ route('icon', ['name' => 'retweet', 'state' => 'Black', 'size' => '12']) }}">
+                    </div>
+                    <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">{{ $tweet->user->name === auth()->user()->name ? 'You' : $tweet->user->display_name }} Retweeted</a>
                 </div>
             @endif
             @if ($tweet->reply_of !== null)
-                <div class="tweetHeader" style="font-size: 13px;">
-                    <div class="tweetOwnerName">{{ $tweet->user->display_name }} Replied</div>
+            <div class="tweetHeader">
+                    <div class="tweetHeaderPicWrapper">
+                        <img class="tweetHeaderPic" src="{{ route('icon', ['name' => 'retweet', 'state' => 'Black', 'size' => '12']) }}">
+                    </div>
+                    <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">{{ $tweet->user->name === auth()->user()->name ? 'You' : $tweet->user->display_name }} Replied</a>
                 </div>
             @endif
             @if ($tweet->reply_of === null && $tweet->retweet_of === null)
@@ -83,25 +89,25 @@
                         <div class="tweetContentFooter">
                             <div class="tweetFooterItem">
                                 <div class="tweetFooterIconWrapper">
-                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'comment', 'color' => 'Black', 'size' => '18']) }}">
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'comment', 'state' => 'Black', 'size' => '18']) }}">
                                     <span class="tweetFooterNum">{{ $tweet->replies_count === 0 ? '' : $tweet->replies_count }}</span>
                                 </div>
                             </div>
                             <div class="tweetFooterItem">
                                 <div class="tweetFooterGreenIconWrapper">
-                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'retweet', 'color' => 'Black', 'size' => '18']) }}">
-                                    <span class="tweetFooterNum">{{ $tweet->retweets_count === 0 ? '' : $tweet->retweets_count }}</span>
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'retweet', 'state' => $tweet->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
+                                    <span class="{{ $tweet->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'greenText' : '' }} tweetFooterNum">{{ $tweet->retweets_count === 0 ? '' : $tweet->retweets_count }}</span>
                                 </div>
                             </div>
                             <div class="tweetFooterItem">
                                 <div class="tweetFooterRedIconWrapper">
-                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'heart', 'color' => 'Black', 'size' => '18']) }}">
-                                    <span class="tweetFooterNum">{{ $tweet->likes_count === 0 ? '' : $tweet->likes_count }}</span>
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'heart', 'state' => $tweet->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
+                                    <span class="{{ $tweet->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'redText' : '' }} tweetFooterNum">{{ $tweet->likes_count === 0 ? '' : $tweet->likes_count }}</span>
                                 </div>
                             </div>
                             <div class="tweetFooterItem">
                                 <div class="tweetFooterIconWrapper">
-                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'upload', 'color' => 'Black', 'size' => '18']) }}">
+                                    <img class="tweetFooterIcon" src="{{ route('icon', ['name' => 'upload', 'state' => 'Black', 'size' => '18']) }}">
                                 </div>
                             </div>
                         </div>

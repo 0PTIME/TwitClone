@@ -24,7 +24,7 @@ Route::get('/notifications', 'NotificationsController@index')->name('notificatio
 Route::get('/messages', 'MessagesController@index')->name('messages');
 Route::get('/{id}/bookmarks', 'BookmarksController@index')->name('bookmarks');
 Route::get('/{id}/lists', 'ListController@index')->name('lists');
-Route::get('/{name}', 'ProfileController@index')->name('name');
+Route::get('/{name}', 'ProfileController@index')->name('profile');
 
 Route::post('/submitTweet', 'TweetController@submitTweet')->name('submitTweet');
 Route::post('/pfupload', 'UploadsController@pfupload')->name('profileUpload.post');

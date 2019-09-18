@@ -52,6 +52,6 @@ class Yap extends Model
     }
 
     public function retweets(){
-        return $this->belongsTo('App\Models\Yap', 'retweet_of');
+        return $this->hasMany('App\Models\Yap', 'retweet_of');
     }
 }

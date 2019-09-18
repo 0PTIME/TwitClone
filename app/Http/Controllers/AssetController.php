@@ -13,10 +13,10 @@ class AssetController extends Controller
         $this->middleware('auth');
     }
 
-    public function icon($name, $color = "White", $size = 25){
+    public function icon($name, $state = "White", $size = 25){
         $path = config('envars.icons_path');
 
-        $new_path = $path . $name . $color . ".png";
+        $new_path = $path . $name . $state . ".png";
 
         if(\file_exists($new_path)){
             return Image::make($new_path)->fit($size)->response();
