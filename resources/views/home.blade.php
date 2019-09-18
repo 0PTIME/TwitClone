@@ -9,6 +9,24 @@
 @endsection
 
 @section('content')
+    <script>
+        function showDropdownMenu(id){
+            document.getElementById('tweetCoverId').style.display = "block";
+            document.getElementById(id).style.display = "block";
+        }
+
+        window.onclick = function(event){
+            var classes = event.toElement.classList;
+            if(classes.contains('bigCoverTransparent')){
+                document.getElementById('tweetCoverId').style.display = "none";
+                var ele = document.getElementsByClassName('dropdown-content');
+                for(var i = 0; i < ele.length; i++){
+                    ele[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    <div class="bigCoverTransparent show" id="tweetCoverId"></div>
     @foreach ($tweets as $tweet)
         <div class="tweet">
             <div class="showTweetImgContainer">
@@ -39,6 +57,22 @@
                             <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }} · </div>
                         </div>
                         <div class="timeForHumans">{{ $tweet->created_at->diffForHumans() }}</div>
+                        <div class="downArrWrapper" onclick="showDropdownMenu('{{ $tweet->id }}dropdown')">
+                            <div class="downArr"><img src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
+                            <div>
+                                <div class="dropdown-content show" id="{{ $tweet->id }}dropdown">
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                    <p class="temp">testing</p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="tweetContentBody">
                             @if ($tweet->content)
                                 <p>{{ $tweet->content }}</p>                            
@@ -54,6 +88,5 @@
                 </div>
             @endif
         </div>
-    @endforeach
-    
+    @endforeach    
 @endsection
