@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hashtag extends Model
 {
-    
+    protected $guarded = [];
 
 
     public function tags(){

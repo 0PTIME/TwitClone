@@ -73,4 +73,8 @@ class User extends Authenticatable
     public function listsMember(){
         return $this->belongsTo('App\Models\ListMember');
     }
+
+    public function followers(){
+        return $this->hasMany('App\Models\Follow', 'follower_id');
+    }
 }

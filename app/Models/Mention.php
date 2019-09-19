@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mention extends Model
 {
    
-    
+    protected $guarded = [];
 
 
     public function yap(){

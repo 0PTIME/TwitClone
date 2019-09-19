@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class PollSubmission extends Model
 {
   
-    
+    protected $guarded = [];
 
 
     public function poll(){

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ListMember extends Model
 {
-    
+    protected $guarded = [];
 
 
 

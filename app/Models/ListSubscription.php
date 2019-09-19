@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ListSubscription extends Model
 {
-    
+    protected $guarded = [];
     
 
     public function list(){

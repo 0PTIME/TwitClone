@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class List extends Model
 {
-    
+    protected $guarded = [];
 
     public function owner(){
         return $this->belongsTo('App\User');
