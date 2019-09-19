@@ -61,42 +61,42 @@
         <div class="leftPlaceholder">
             <div class="leftContentHolder">
                 <div class="bigCoverTransparent show" id="sidebarCoverupTransparent"></div>
-                <div class="sidebarMenuContainer" onclick="location.href='{{ route('home') }}'">
+                <div class="sidebarMenuContainerCurrent" onclick="location.href='{{ route('home') }}'">
                     <div class="sidebarMenuLinks">
                         <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'dog']) }}">
                     </div>
                 </div>
-                <div class="sidebarMenuContainer" onclick="location.href='{{ route('home') }}'">
+                <div class="{{ Route::currentRouteName() === "home" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('home') }}'">
                     <div class="sidebarMenuLinks">
                         <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'home', 'state' => Route::currentRouteName() === "home" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "home" ? 'colorBlue' : ''}}">Home</span>
                     </div>
                 </div>
-                <div class="sidebarMenuContainer" onclick="location.href='{{ route('explore') }}'">
+                <div class="{{ Route::currentRouteName() === "explore" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('explore') }}'">
                     <div class="sidebarMenuLinks">
                         <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'hashtag', 'state' => Route::currentRouteName() === "explore" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "explore" ? 'colorBlue' : ''}}">Explore</span>
                     </div>
                 </div>
-                <div class="sidebarMenuContainer" onclick="location.href='{{ route('notifications') }}'">
+                <div class="{{ Route::currentRouteName() === "notifications" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('notifications') }}'">
                     <div class="sidebarMenuLinks">                    
                         <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bell', 'state' => Route::currentRouteName() === "notifications" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "notifications" ? 'colorBlue' : ''}}">Notifications</span>
                     </div>
                 </div>
-                <div class="sidebarMenuContainer" onclick="location.href='{{ route('messages') }}'">
+                <div class="{{ Route::currentRouteName() === "messages" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('messages') }}'">
                     <div class="sidebarMenuLinks">
                         <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'envelope', 'state' => Route::currentRouteName() === "messages" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "messages" ? 'colorBlue' : ''}}">Messages</span>
                     </div>
                 </div>
-                <div class="sidebarMenuContainer" onclick="location.href='{{ route('bookmarks', ['id' => auth()->user()->id]) }}'">
+                <div class="{{ Route::currentRouteName() === "bookmarks" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('bookmarks', ['id' => auth()->user()->id]) }}'">
                     <div class="sidebarMenuLinks">                    
                         <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bookmark', 'state' => Route::currentRouteName() === "bookmarks" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "bookmarks" ? 'colorBlue' : ''}}">Bookmarks</span>
                     </div>
                 </div>
-                <div class="sidebarMenuContainer" onclick="location.href='{{ route('lists', ['id' => auth()->user()->id]) }}'">
+                <div class="{{ Route::currentRouteName() === "lists" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('lists', ['id' => auth()->user()->id]) }}'">
                     <div class="sidebarMenuLinks">                    
                         <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'page', 'state' => Route::currentRouteName() === "lists" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "lists" ? 'colorBlue' : ''}}">Lists</span>
@@ -105,7 +105,7 @@
                 <form action="{{ route('profileUpload.post') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="image" id="ProfileInputFile" onchange="form.submit()" class="fileUpload">
-                    <div class="sidebarMenuContainer" id="ProfileUploadButton">
+                    <div class="sidebarMenuContainerCurrent" id="ProfileUploadButton">
                         <div type="button" class="sidebarMenuLinks">
                             <img class="miniProfilePic sidebarMenuElements" src="{{ route('profilePic', ['id' => auth()->user()->id]) }}" class="miniProfilePic">
                             <span class="sidebarMenuElements spanThingy">Profile</span>
