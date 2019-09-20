@@ -7,6 +7,9 @@
     font-family: $font-family-sans-serif;
     margin: 0;
     padding: 0;
+    &:focus{
+        outline: none;
+    }
 }
 
 body{
@@ -21,6 +24,13 @@ button{
 .tweetCompMain{
     z-index: 10;
     position: fixed;
+    @media only screen and (max-width: 700px){
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
     margin-left: calc(50vw - 300px);
     margin-top: 5vh;
     width: 600px;
@@ -564,7 +574,7 @@ button{
         display: inline-block;
         height: 100vh;
         width: calc(50vw - 300px);
-        position: absolute;
+        position: fixed;
         .rightPlaceholder{
             margin-left: 20px;
             width: 290px;
@@ -573,7 +583,7 @@ button{
                 width: inherit;
                 .rightMainContent{
                     width: inherit;
-                    font-size: 25px;
+                    font-size: 20px;
                 }
             }
         }
@@ -583,7 +593,7 @@ button{
     .rightMain{
         display: inline-block;
         height: 100vh;
-        position: absolute;
+        position: fixed;
         width: calc(50vw - 300px);
         .rightPlaceholder{
             margin-left: 35px;
@@ -592,7 +602,7 @@ button{
             .rightContentHolder{
                 width: inherit;
                 .rightMainContent{
-                    font-size: 25px;
+                    font-size: 19px;
                     width: inherit;
                 }
             }
@@ -621,10 +631,9 @@ button{
     border-radius: 15px;
     padding-bottom: 15px;
     .twitterItemContent{
-        background-color: inherit;
         border-bottom: 1px solid $twitterBorder;
         padding: 10px;
-        width: calc(inherit - 20px);
+        width: calc(100% - 20px);
         height: fit-content;
         &:hover{
             background-color: $twitterHighlightTwo;
@@ -642,4 +651,86 @@ button{
 }
 .redText{
     color: $twitterRedText;
+}
+div[contenteditable]{
+    max-height: 600px;
+    overflow: auto;
+}
+div[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555; 
+}
+.tweetSubmitButton{
+    float: right;
+    width: 80px;
+    height: 30px;
+    border: none;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: $twitterBlue;
+    color: white;
+}
+.tweetComposer{
+    @media only screen and (max-width: 1005px){
+        display: none;
+    }
+    padding-left: 10px;
+    padding-right: 10px;
+    width: calc(100% - 20px);
+    display: flex;
+    height: fit-content;
+    border-bottom: 10px solid $twitterBorder;
+    .tweetComposerBody{
+        width: 100%;
+        padding-top: 10px;
+        height: fit-content;
+        .tweetComposerProfile{
+            margin-right: 10px;
+            width: 50px;
+            float: left;
+        }
+        .tweetComposerContent{
+            float: right;
+            width: calc(100% - 60px);
+            height: fit-content;
+            .tweetComposerContentBody{
+                width: 100%;
+                height: fit-content;
+                min-height: 50px;
+                background-color: transparent;
+                color: white;
+                font-size: 21px;
+                border: none;
+                cursor: text;
+            }
+            .tweetComposerContentFooter{
+                margin-top: 5px;
+                height: 40px;
+                width: 100%;
+                .tweetComposerFooterItem{
+                    display: inline-block;
+                    cursor: pointer;
+                    .tweetFooterIconWrapper{
+                        width: 36px;
+                        height: 36px;
+                        color: $twitterFooterText;
+                        &:hover{
+                            border-radius: 50%;
+                            background-color: $twitterBlueHighlight;
+                        }
+                        .tweetFooterIcon{
+                            margin: 7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dropdownMenuItem{
+    padding: 15px;
+    &:hover{
+        background-color: $twitterHighlight;
+    }
 }

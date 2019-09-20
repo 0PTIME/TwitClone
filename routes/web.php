@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -26,7 +25,8 @@ Route::get('/{id}/bookmarks', 'BookmarksController@index')->name('bookmarks');
 Route::get('/{id}/lists', 'ListController@index')->name('lists');
 Route::get('/{name}', 'ProfileController@index')->name('profile');
 
-Route::post('/submitTweet', 'TweetController@submitTweet')->name('submitTweet');
+Route::resource('yap', 'YapController');
+
 Route::post('/pfupload', 'UploadsController@pfupload')->name('profileUpload.post');
 
 Route::prefix('asset')->group(function(){

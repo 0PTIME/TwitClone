@@ -28,7 +28,7 @@
             <div class="tweetCompHeaderBar">
                 <div class="tweetHeaderBarMainContent">
                     <div class="closeButton">
-                        <img src="{{ url('/asset/icon/x/Blue/22') }}">
+                        <img alt="loading" src="{{ route('icon', ['name' => 'x', 'state' => 'Blue', 'size' => '22']) }}">
                     </div>
                 </div>
             </div>
@@ -36,15 +36,15 @@
                 <div class="tweetCompMainContentPlaceholder">
                     <div class="sideProfileMain">
                         <div class="tweetProfilePic">
-                            <img src="{{ url('/asset/' . Auth::user()->id . '/pic/50') }}" class="miniProfilePic">
+                            <img alt="loading" src="{{ route('profilePic', ['id' => auth()->user()->id, 'size' => 50]) }}" class="miniProfilePic">
                         </div>        
                     </div>
                     <div class="tweetCompositionMain">
                         <div class="tweetCompostisionMainPlaceholder">
                             <div class="tweetMainCompositionArea">
-                                <form action="{{ route('submitTweet')  }}" method="post">
+                                <form action="{{ route('yap.store')  }}" method="post">
                                     @csrf
-                                    <input type="text" placeholder="Enter Your Tweet Here..." required>
+                                    <input type="text" name="content" placeholder="Enter Your Tweet Here..." autocomplete="off" required>
                                     <input type="submit">
                                 </form>
                             </div>
@@ -63,42 +63,42 @@
                 <div class="bigCoverTransparent show" id="sidebarCoverupTransparent"></div>
                 <div class="sidebarMenuContainerCurrent" onclick="location.href='{{ route('home') }}'">
                     <div class="sidebarMenuLinks">
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'dog']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'dog']) }}">
                     </div>
                 </div>
                 <div class="{{ Route::currentRouteName() === "home" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('home') }}'">
                     <div class="sidebarMenuLinks">
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'home', 'state' => Route::currentRouteName() === "home" ? 'Blue' : 'White']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'home', 'state' => Route::currentRouteName() === "home" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "home" ? 'colorBlue' : ''}}">Home</span>
                     </div>
                 </div>
                 <div class="{{ Route::currentRouteName() === "explore" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('explore') }}'">
                     <div class="sidebarMenuLinks">
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'hashtag', 'state' => Route::currentRouteName() === "explore" ? 'Blue' : 'White']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'hashtag', 'state' => Route::currentRouteName() === "explore" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "explore" ? 'colorBlue' : ''}}">Explore</span>
                     </div>
                 </div>
                 <div class="{{ Route::currentRouteName() === "notifications" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('notifications') }}'">
                     <div class="sidebarMenuLinks">                    
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bell', 'state' => Route::currentRouteName() === "notifications" ? 'Blue' : 'White']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bell', 'state' => Route::currentRouteName() === "notifications" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "notifications" ? 'colorBlue' : ''}}">Notifications</span>
                     </div>
                 </div>
                 <div class="{{ Route::currentRouteName() === "messages" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('messages') }}'">
                     <div class="sidebarMenuLinks">
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'envelope', 'state' => Route::currentRouteName() === "messages" ? 'Blue' : 'White']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'envelope', 'state' => Route::currentRouteName() === "messages" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "messages" ? 'colorBlue' : ''}}">Messages</span>
                     </div>
                 </div>
                 <div class="{{ Route::currentRouteName() === "bookmarks" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('bookmarks', ['id' => auth()->user()->id]) }}'">
                     <div class="sidebarMenuLinks">                    
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bookmark', 'state' => Route::currentRouteName() === "bookmarks" ? 'Blue' : 'White']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'bookmark', 'state' => Route::currentRouteName() === "bookmarks" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "bookmarks" ? 'colorBlue' : ''}}">Bookmarks</span>
                     </div>
                 </div>
                 <div class="{{ Route::currentRouteName() === "lists" ? 'sidebarMenuContainerCurrent' : 'sidebarMenuContainer' }}" onclick="location.href='{{ route('lists', ['id' => auth()->user()->id]) }}'">
                     <div class="sidebarMenuLinks">                    
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'page', 'state' => Route::currentRouteName() === "lists" ? 'Blue' : 'White']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'page', 'state' => Route::currentRouteName() === "lists" ? 'Blue' : 'White']) }}">
                         <span class="sidebarMenuElements spanThingy {{ Route::currentRouteName() === "lists" ? 'colorBlue' : ''}}">Lists</span>
                     </div>
                 </div>
@@ -106,15 +106,15 @@
                     @csrf
                     <input type="file" name="image" id="ProfileInputFile" onchange="form.submit()" class="fileUpload">
                     <div class="sidebarMenuContainerCurrent" id="ProfileUploadButton">
-                        <div type="button" class="sidebarMenuLinks">
-                            <img class="miniProfilePic sidebarMenuElements" src="{{ route('profilePic', ['id' => auth()->user()->id]) }}" class="miniProfilePic">
+                        <div class="sidebarMenuLinks">
+                            <img alt="loading" class="miniProfilePic sidebarMenuElements" src="{{ route('profilePic', ['id' => auth()->user()->id]) }}">
                             <span class="sidebarMenuElements spanThingy">Profile</span>
                         </div>
                     </div>
                 </form>
                 <div class="sidebarMenuContainer" id="moreButton">
                     <div class="sidebarMenuLinks">
-                        <img class="sidebarMenuElements" src="{{ route('icon', ['name' => 'menu']) }}">
+                        <img alt="loading" class="sidebarMenuElements" src="{{ route('icon', ['name' => 'menu']) }}">
                         <span class="sidebarMenuElements spanThingy">More</span>
                     </div>
                     <div class="dropdown-content show" id="sidebarDropdownMenu">
@@ -135,10 +135,8 @@
         </div>
     </div>
     <div class="main">
-        <div class="mainHeader">
-            <p class="globalHeader">@yield('pageHeader')</p>
-        </div>
-        <div class="defaultPlaceholder"></div>
+        @yield('pageHeader')
+        @yield('tweetComposer')
         @yield('content')
     </div>
     <div class="rightMain">

@@ -9,7 +9,7 @@ class Yap extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['users_id', 'content', 'retweet_of', 'reply_of'];
+    protected $fillable = ['user_id', 'content', 'retweet_of', 'reply_of'];
 
     public function media(){
         return $this->hasMany('App\Models\Media');

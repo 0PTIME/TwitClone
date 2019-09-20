@@ -1,9 +1,5 @@
 @extends('layouts.home')
 
-@section('pageHeader')
-    Explore
-@endsection
-
 @section('pageTitle')
 Explore
 @endsection
