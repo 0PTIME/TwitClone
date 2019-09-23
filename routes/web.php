@@ -27,7 +27,10 @@ Route::get('/{name}', 'ProfileController@index')->name('profile');
 
 Route::resource('yap', 'YapController');
 
+Route::post('/like/{id}', 'LikeController@like')->name('like');
+Route::post('/retweet/{id}', 'RetweetController@retweet')->name('retweet');
 Route::post('/pfupload', 'UploadsController@pfupload')->name('profileUpload.post');
+
 
 Route::prefix('asset')->group(function(){
     Route::get('icon/{name}/{state?}/{size?}', 'AssetController@icon')->name('icon');

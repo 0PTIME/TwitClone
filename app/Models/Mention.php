@@ -9,7 +9,7 @@ class Mention extends Model
 {
    
     protected $guarded = [];
-
+    public $timestamps = false;
 
     public function yap(){
         return $this->belongsTo('App\Models\Yap');

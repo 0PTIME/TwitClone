@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     protected $guarded = [];
-
-
-
+    public $timestamps = false;
 
     public function yap(){
         return $this->belongsTo('App\Models\Yap');

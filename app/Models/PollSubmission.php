@@ -9,7 +9,7 @@ class PollSubmission extends Model
 {
   
     protected $guarded = [];
-
+    public $timestamps = false;
 
     public function poll(){
         return $this->belongsTo('App\Models\Poll');

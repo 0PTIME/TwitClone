@@ -78,8 +78,7 @@ $(document).ready(function(){
     })
 
     $('form[name="deleteForm"]').submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
-        $('.bigCoverTransparent').trigger('click'); 
+        e.preventDefault(); // avoid to execute the actual submit of the form. 
         var form = $(this);
         var url = form.attr('action'); 
         $.ajax({
@@ -98,6 +97,97 @@ $(document).ready(function(){
                 alert("error :(")
             },
         });    
+    });
+
+    $('form[name="likeForm"]').submit(function(e){        
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action'); 
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(data){
+                var currVal = parseInt(form.find('span').text());
+                if(data === '1'){
+                    form.find('span')[0].classList.add('redText');
+                    if(isNaN(currVal)){
+                        currVal = 1;
+                    }
+                    else{
+                        currVal += 1;
+                    }
+                    console.log(currVal);
+                    form.find('span').text(currVal);
+                    var newSrc = form.find('img')[0].src.replace("Black", "Active");
+                    form.find('img')[0].src = newSrc;
+                }
+                if(data === '0')
+                {
+                    form.find('span')[0].classList.remove('redText');
+                    if(currVal == 1){
+                        currVal = null;
+                    }
+                    else{
+                        currVal -= 1;
+                    }
+                    console.log(currVal);
+                    form.find('span').text(currVal);
+                    var newSrc = form.find('img')[0].src.replace("Active", "Black");
+                    form.find('img')[0].src = newSrc;
+                }
+            },
+            error: function(){
+                alert("error :(")
+            },
+        });
+        
+    });
+
+    $('form[name="retweetForm"]').submit(function(e){        
+        e.preventDefault();
+        var form = $(this);
+        console.log(form);
+        var url = form.attr('action'); 
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(data){
+                var currVal = parseInt(form.find('span').text());
+                if(data === '1'){
+                    form.find('span')[0].classList.add('greenText');
+                    if(isNaN(currVal)){
+                        currVal = 1;
+                    }
+                    else{
+                        currVal += 1;
+                    }
+                    console.log(currVal);
+                    form.find('span').text(currVal);
+                    var newSrc = form.find('img')[0].src.replace("Black", "Active");
+                    form.find('img')[0].src = newSrc;
+                }
+                if(data === '0')
+                {
+                    form.find('span')[0].classList.remove('greenText');
+                    if(currVal == 1){
+                        currVal = null;
+                    }
+                    else{
+                        currVal -= 1;
+                    }
+                    console.log(currVal);
+                    form.find('span').text(currVal);
+                    var newSrc = form.find('img')[0].src.replace("Active", "Black");
+                    form.find('img')[0].src = newSrc;
+                }
+            },
+            error: function(){
+                alert("error :(")
+            },
+        });
+        
     });
 });
 

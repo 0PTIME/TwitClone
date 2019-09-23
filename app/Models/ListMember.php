@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ListMember extends Model
 {
     protected $guarded = [];
-
+    public $timestamps = false;
 
 
     public function list(){

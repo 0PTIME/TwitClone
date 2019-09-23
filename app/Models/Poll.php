@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Poll extends Model
 {
     protected $guarded = [];
-    
-
-
+    public $timestamps = false;
 
     public function yap(){
         return $this->belongsTo('App\Models\Yap');

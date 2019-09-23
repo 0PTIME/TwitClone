@@ -16,7 +16,7 @@ class CreateYapsTable extends Migration
         Schema::create('yaps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
-            $table->string('content');
+            $table->string('content')->nullable();
             $table->string('media', 100)->nullable();
             $table->bigInteger('retweet_of')->unsigned()->nullable();
             $table->bigInteger('reply_of')->unsigned()->nullable();
