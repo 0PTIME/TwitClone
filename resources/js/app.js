@@ -44,6 +44,10 @@ $(document).ready(function(){
         document.getElementById('textInput').innerText = document.getElementById('conetenteditable').innerText;
         document.tweetCompFU.submit();
     });
+    $('#submitFormTwoId').click(function(){
+        document.getElementById('textInputTwo').innerText = document.getElementById('conetenteditableTwo').innerText;
+        document.tweetCompFUTwo.submit();
+    });
     
     $('#moreButton').click(function(){
         document.getElementById('sidebarCoverupTransparent').style.display = "block";
@@ -235,6 +239,16 @@ $(document).ready(function(){
     $('#tweetComposerMediaUpload').change(function(){
         readURL(this);
     });
+
+    $('#pollOpenId').click(function(){
+        document.getElementById('mainContentId').style.display = 'none';
+        document.getElementById('pollContentId').style.display = 'block';
+    });
+
+    $('#pollCloseId').click(function(){
+        document.getElementById('mainContentId').style.display = 'block';
+        document.getElementById('pollContentId').style.display = 'none';
+    })
 });
 
 

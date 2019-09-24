@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Models\Poll;
 use App\Models\Yap;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
@@ -108,5 +109,22 @@ class YapController extends Controller
         else{
             echo "fail";
         }
+    }
+
+    public function createPoll(Request $request){
+        $curYap = Yap::create([
+            'content' => $request->content,
+            'user_id' => auth()->user()->id
+        ]);
+        
+        Poll::create([
+            'yap_id' => $curYap->id,
+            'option_one' => $request->option_one,
+            'option_two' => $request->option_two,
+            'option_three' => $request->option_three,
+            'option_four' => $request->option_four,
+        ]);
+
+        return back();
     }
 }

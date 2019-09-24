@@ -28,6 +28,7 @@ Route::get('/{id}/lists', 'ListController@index')->name('lists');
 Route::get('/{name}', 'ProfileController@index')->name('profile');
 
 Route::resource('yap', 'YapController');
+Route::post('yappoll', 'YapController@createPoll')->name('yap.poll');
 
 Route::post('/like/{id}', 'LikeController@like')->name('like');
 Route::post('/retweet/{id}', 'RetweetController@retweet')->name('retweet');

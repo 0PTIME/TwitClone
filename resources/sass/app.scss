@@ -661,6 +661,7 @@ div[placeholder]:empty:before {
     border-radius: 15px;
     background-color: $twitterBlue;
     color: white;
+    cursor: pointer;
 }
 .tweetComposer{
     @media only screen and (max-width: 1005px){
@@ -720,12 +721,67 @@ div[placeholder]:empty:before {
     }
 }
 
+.tweetComposer:after{
+    content: " ";
+    display: block;
+    clear: both;
+}
+
 .pollMain{
-    width: 98%;
+    width: calc(98% - 40px);
+    padding: 20px;
     margin-left: 1%;
     margin-right: 1%;
     border: 1px solid $twitterBorder;
     border-radius: 15px;
+    .pollOptionContainer{
+        width: calc(100% - 40px);
+        padding-top: 40px;
+        display: inline-block;
+        .pollOption{
+            height: 80px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            .highlightArea{
+                height: 60px;
+                background-color: $twitterPoll;
+                border-bottom: 2px solid $twitterBorder;
+                border-bottom-left-radius: 2px;
+                border-bottom-right-radius: 2px;
+                .topOption{
+                    height: 50%;
+                    color: $twitterFooterText;
+                }
+                .bottomOption{
+                    height: 50%;
+                    .pollInput{
+                        font-size: 15px;
+                        color: white;
+                        border: none;
+                        width: 96%;
+                        background-color: transparent;
+                        margin-left: 2%;
+                        margin-right: 2%;
+                    }
+                }
+            }
+        }
+    }
+    .pollLeftContainer{
+        width: 40px;
+        float: right;
+        min-height: 230px;
+        .pollCloseImgWrapper{
+            width: 30px;
+            height: 30px;
+            background-color: $twitterBlue;
+            border-radius: 50%;
+            &:hover{
+                background-color: $twitterBlueTwo;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .dropdownMenuItem{
@@ -745,4 +801,8 @@ div[placeholder]:empty:before {
     object-fit: cover;
     border: 1px solid $twitterBorder;
     cursor: pointer;
+}
+
+.TwoTwoThreeZeroicon{
+    margin: 4px;
 }
