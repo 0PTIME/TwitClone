@@ -36,9 +36,13 @@ $(document).ready(function(){
         $('#ProfileInputFile').click();
     });
 
+    $('#mediaUploadId').click(function(){
+        $('#tweetComposerMediaUpload').click();
+    });
+
     $('#submitFormId').click(function(){
         document.getElementById('textInput').innerText = document.getElementById('conetenteditable').innerText;
-        document.tweetForm.submit();
+        document.tweetCompFU.submit();
     });
     
     $('#moreButton').click(function(){
@@ -117,7 +121,6 @@ $(document).ready(function(){
                     else{
                         currVal += 1;
                     }
-                    console.log(currVal);
                     form.find('span').text(currVal);
                     var newSrc = form.find('img')[0].src.replace("Black", "Active");
                     form.find('img')[0].src = newSrc;
@@ -131,7 +134,6 @@ $(document).ready(function(){
                     else{
                         currVal -= 1;
                     }
-                    console.log(currVal);
                     form.find('span').text(currVal);
                     var newSrc = form.find('img')[0].src.replace("Active", "Black");
                     form.find('img')[0].src = newSrc;
@@ -147,7 +149,6 @@ $(document).ready(function(){
     $('form[name="retweetForm"]').submit(function(e){        
         e.preventDefault();
         var form = $(this);
-        console.log(form);
         var url = form.attr('action'); 
         $.ajax({
             type: "POST",
@@ -163,7 +164,6 @@ $(document).ready(function(){
                     else{
                         currVal += 1;
                     }
-                    console.log(currVal);
                     form.find('span').text(currVal);
                     var newSrc = form.find('img')[0].src.replace("Black", "Active");
                     form.find('img')[0].src = newSrc;
@@ -177,7 +177,6 @@ $(document).ready(function(){
                     else{
                         currVal -= 1;
                     }
-                    console.log(currVal);
                     form.find('span').text(currVal);
                     var newSrc = form.find('img')[0].src.replace("Active", "Black");
                     form.find('img')[0].src = newSrc;
@@ -189,7 +188,68 @@ $(document).ready(function(){
         });
         
     });
+
+    $('form[name="tweetCompFU"]').submit(function(e){        
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action'); 
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(data){
+                var currVal = parseInt(form.find('span').text());
+                if(data === '1'){
+                    form.find('span')[0].classList.add('greenText');
+                    if(isNaN(currVal)){
+                        currVal = 1;
+                    }
+                    else{
+                        currVal += 1;
+                    }
+                    form.find('span').text(currVal);
+                    var newSrc = form.find('img')[0].src.replace("Black", "Active");
+                    form.find('img')[0].src = newSrc;
+                }
+                if(data === '0')
+                {
+                    form.find('span')[0].classList.remove('greenText');
+                    if(currVal == 1){
+                        currVal = null;
+                    }
+                    else{
+                        currVal -= 1;
+                    }
+                    form.find('span').text(currVal);
+                    var newSrc = form.find('img')[0].src.replace("Active", "Black");
+                    form.find('img')[0].src = newSrc;
+                }
+            },
+            error: function(){
+                alert("error :(")
+            },
+        });
+        
+    });
+
+    $('#tweetComposerMediaUpload').change(function(){
+        readURL(this);
+    });
 });
+
+
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();        
+        reader.onload = function (e) {
+            $('#tempPicLocation').attr('src', e.target.result);
+        }        
+        reader.readAsDataURL(input.files[0]);
+        $('#tempPicLocation')[0].style.display = 'block';
+    }
+}
+
 
 
 

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use App\Models\Yap;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Image;
 
 class YapController extends Controller
 {
@@ -37,7 +40,22 @@ class YapController extends Controller
      */
     public function store(Request $request)
     {
-        Yap::create(['content' => request('content'), 'user_id' => auth()->user()->id]);
+        $curYap = Yap::create([
+            'content' => $request->content,
+            'user_id' => auth()->user()->id
+        ]);
+        
+        if(isset($request->image)){
+            $img = Image::make($request->image);
+            $path = config('envars.tweet_media_path'). auth()->user()->id . $curYap->id . $request->image->getClientOriginalName();
+            $img->save($path);
+    
+            Media::create([
+                'yap_id' => $curYap->id,
+                'file_name' => auth()->user()->id . $curYap->id . $request->image->getClientOriginalName(),
+            ]);
+        }
+
         return back();
     }
 

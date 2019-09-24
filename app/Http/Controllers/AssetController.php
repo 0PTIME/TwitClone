@@ -38,8 +38,8 @@ class AssetController extends Controller
     }
     public function tweetMedia($id){
         $tweet = Yap::find($id);
-        if($tweet->media){
-            $path = config('envars.tweet_media_path') . $tweet->media;
+        if($tweet->media->first()){
+            $path = config('envars.tweet_media_path') . $tweet->media->first()->file_name;
             if(file_exists($path)){
                 return Image::make($path)->response();
             }

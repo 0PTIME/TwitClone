@@ -18,10 +18,16 @@
             <img alt="loading" class="miniProfilePic" src="{{ route('profilePic', ['id' => auth()->user()->id,'size' => 50]) }}">
         </div>
         <div class="tweetComposerContent">
-            <div class="tweetComposerContentBody" id="conetenteditable" placeholder="What's Happening?" contenteditable></div>
+            <div id="mainContentId">
+                <div class="tweetComposerContentBody" id="conetenteditable" placeholder="What's Happening?" contenteditable></div>
+                <img alt="loading" class="tweetPicture show" src="#" id="tempPicLocation">
+            </div>
+            <div id="pollContentId" class="show">
+                <div class="tweetComposerContentBody" id="conetenteditableTwo" placeholder="Ask a question..." contenteditable></div>                
+            </div>
             <div class="tweetComposerContentFooter">
                 <div class="tweetComposerFooterItem">
-                    <div class="tweetFooterIconWrapper">
+                    <div class="tweetFooterIconWrapper" id="mediaUploadId">
                         <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'image', 'state' => 'Blue', 'size' => '22']) }}">
                     </div>
                 </div>
@@ -41,8 +47,9 @@
                     </div>
                 </div>
                 <div class="tweetComposerFooterItem" style="float: right;">
-                    <form action="{{ route('yap.store') }}" name="tweetForm" method="POST">
+                    <form action="{{ route('yap.store') }}" name="tweetCompFU" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="file" name="image" id="tweetComposerMediaUpload" class="fileUpload">
                         <textarea name="content" id="textInput" hidden></textarea>
                         <button type="button" class="tweetSubmitButton" id="submitFormId">Yap</button>
                     </form>
@@ -120,7 +127,7 @@
                             @if ($tweet->content)
                                 <p>{{ $tweet->content }}</p>                            
                             @endif
-                            @if ($tweet->media)
+                            @if ($tweet->media->first())
                                 <img alt="loading" class="tweetPicture" onclick="showTweetImg({{ $tweet->id }})" src="{{ route('tweetMedia', ['id' => $tweet->id]) }}">
                             @endif
                         </div>
