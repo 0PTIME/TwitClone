@@ -41,8 +41,12 @@ class YapController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'content' => 'required|max:255',
+        ]);
+
         $curYap = Yap::create([
-            'content' => $request->content,
+            'content' => $validatedData['content'],
             'user_id' => auth()->user()->id
         ]);
         
@@ -104,7 +108,7 @@ class YapController extends Controller
     {
         if(request('tweet_owner') == auth()->user()->id){
             $yap->delete();
-            echo $yap->id;
+            echo "tweet" . $yap->id;
         }
         else{
             echo "fail";
@@ -112,17 +116,28 @@ class YapController extends Controller
     }
 
     public function createPoll(Request $request){
+        $validatedData = $request->validate([
+            'content' => 'required|max:255',
+            'time_days' => 'required',
+            'option_one' => 'required|max:25',
+            'option_two' => 'required|max:25',
+            'option_three' => 'max:25',
+            'option_four' => 'max:25',
+        ]);
+
         $curYap = Yap::create([
-            'content' => $request->content,
+            'content' => $validatedData['content'],
             'user_id' => auth()->user()->id
         ]);
+        $date = Date('Y-m-d H:i:s', strtotime("+" . $validatedData['time_days'] . " days"));
         
         Poll::create([
             'yap_id' => $curYap->id,
-            'option_one' => $request->option_one,
-            'option_two' => $request->option_two,
-            'option_three' => $request->option_three,
-            'option_four' => $request->option_four,
+            'expiration_date' => $date,
+            'option_one' => $validatedData['option_one'],
+            'option_two' => $validatedData['option_two'],
+            'option_three' => $validatedData['option_three'],
+            'option_four' => $validatedData['option_four'],
         ]);
 
         return back();

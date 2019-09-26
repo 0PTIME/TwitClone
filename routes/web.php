@@ -34,6 +34,10 @@ Route::post('/like/{id}', 'LikeController@like')->name('like');
 Route::post('/retweet/{id}', 'RetweetController@retweet')->name('retweet');
 Route::post('/pfupload', 'UploadsController@pfupload')->name('profileUpload.post');
 
+Route::post('/pollsubmission/{id}', 'PollController@submitOption')->name('poll.submit');
+Route::get('/pollresults/{id}', 'PollController@showResults')->name('displaypoll.results');
+Route::post('pollvoting', 'PollController@showVoting')->name('voting');
+
 
 Route::prefix('asset')->group(function(){
     Route::get('icon/{name}/{state?}/{size?}', 'AssetController@icon')->name('icon');

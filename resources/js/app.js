@@ -31,6 +31,9 @@ const app = new Vue({
     el: '#app',
 });
 
+
+
+
 $(document).ready(function(){
     $('#ProfileUploadButton').click(function(){
         $('#ProfileInputFile').click();
@@ -248,7 +251,35 @@ $(document).ready(function(){
     $('#pollCloseId').click(function(){
         document.getElementById('mainContentId').style.display = 'block';
         document.getElementById('pollContentId').style.display = 'none';
-    })
+    });
+
+    $('.pollDisplayOption').one('click', function(){
+        var option = $(this).attr('id').split('.');
+        $("<input />").attr("type", "hidden").attr("name", "option").attr("value", option[1]).appendTo('form[name="pollSubmissionForm"]');        
+        $(this).find('button').trigger('click');
+    });
+    
+    $('form[name="pollSubmissionForm"]').submit(function(e){
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action'); 
+        console.log(form);
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(data){
+                if(data === '1'){
+                    form.find('iframe')[0].contentDocument.location.reload(true);
+                    form.find('iframe')[0].style.display = "block";
+                    form.find('.pollDisplayOptions')[0].style.display = "none";
+                }
+            },
+            error: function(){
+                alert("error :(")
+            },
+        });
+    });
 });
 
 
@@ -263,50 +294,3 @@ function readURL(input) {
         $('#tempPicLocation')[0].style.display = 'block';
     }
 }
-
-
-
-
-
-// function showTweetImg(id){
-//     document.getElementById('bigCoverupOpacity').style.display = "block";
-//     document.getElementById('showTweetImg'+id).style.display = "block";
-// }
-
-      
-// window.onclick = function(event){
-//     var classes = event.toElement.classList;
-//     if(classes.contains('bigCoverTransparent')){
-//         document.getElementById('tweetCoverId').style.display = "none";
-//         var ele = document.getElementsByClassName('dropdown-content');
-//         for(var i = 0; i < ele.length; i++){
-//             ele[i].style.display = "none";
-//         }
-//     }
-// }
-
-
-// window.onscroll = function(){ stickyRightMain() };
-// var rightMain = document.getElementById('rightMain');
-// var bottomRightMain = document.getElementById('stickyId');
-// var sticky = bottomRightMain.offsetTop;
-
-// function stickyRightMain(){
-//     if(window.pageYOffset >= sticky){
-//         rightMain.classList.add('sticky');
-//     }
-//     else{
-//         rightMain.classList.remove('sticky');
-//     }
-// }
-
-// function submitForm(){
-//     var contenteditalbe = document.getElementById('conetenteditable').innerText;
-//     document.getElementById('textInput').innerText = contenteditalbe;
-//     document.tweetForm.submit();
-// }
-
-// function showDropdownMenu(id){
-//     document.getElementById('tweetCoverId').style.display = "block";
-//     document.getElementById(id).style.display = "block";
-// }

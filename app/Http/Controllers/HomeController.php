@@ -25,9 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tweets = Yap::orderBy('created_at', 'DESC')->get();
-
-        
+        $tweets = Yap::orderBy('created_at', 'DESC')->get();        
         return view('home', compact('tweets'));
     }
 }

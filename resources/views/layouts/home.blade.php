@@ -145,7 +145,7 @@
                 <div class="rightMainContent" id="rightMain">
                     <div class="homesearch">
                         <form action="search" class="searchBar" method="GET">
-                            <input type="text" class="searchInput" name="keyword" autocomplete="off" placeholder="Seach Yapper">
+                            <input data-emojiable="true" type="text" class="searchInput" name="keyword" autocomplete="off" placeholder="Seach Yapper">
                         </form>
                     </div>
                     <div class="defaultPlaceholder"></div>

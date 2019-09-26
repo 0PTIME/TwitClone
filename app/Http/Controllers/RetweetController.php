@@ -23,7 +23,6 @@ class RetweetController extends Controller
         else{
             Yap::create([
                 'user_id' => auth()->user()->id,
-                'content' => null,
                 'retweet_of' => $id,
             ]);
             echo '1';

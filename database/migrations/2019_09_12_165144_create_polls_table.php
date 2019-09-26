@@ -16,6 +16,7 @@ class CreatePollsTable extends Migration
         Schema::create('polls', function (Blueprint $table) {
             $table->Increments('id');
             $table->bigInteger('yap_id')->unsigned();
+            $table->dateTime('expiration_date')->nullable();
             $table->string('option_one', 45)->nullable();
             $table->string('option_two', 45)->nullable();
             $table->string('option_three', 45)->nullable();

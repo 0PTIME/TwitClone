@@ -14,6 +14,7 @@ class CreatePollSubmissionsTable extends Migration
     public function up()
     {
         Schema::create('poll_submissions', function (Blueprint $table) {
+            $table->Increments('id');
             $table->integer('poll_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->tinyInteger('option')->unsigned();
