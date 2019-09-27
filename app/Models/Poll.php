@@ -47,10 +47,12 @@ class Poll extends Model
         $optionNum['option_three'] = $subColl->where('option', 3)->count();
         $optionNum['option_four'] = $subColl->where('option', 4)->count();
         arsort($optionNum);
+        $arrKeys = array_keys($optionNum);
+        if($optionNum[$arrKeys[0]] == $optionNum[$arrKeys[1]]) { $winner = 5; } else{ $winner = array_key_first($optionNum); }
         $count = $subColl->count() === 0 ? 1 : $subColl->count();
         return [
             'count' => $count,
-            'winner' => $optionNum[array_key_first($optionNum)],
+            'winner' => $winner,
             'option_one' => round((($optionNum['option_one'] / $count) * 100), 0),
             'option_two' => round((($optionNum['option_two'] / $count) * 100), 0),
             'option_three' => round((($optionNum['option_three'] / $count) * 100), 0),
@@ -72,6 +74,5 @@ class Poll extends Model
         else{
             return false;
         }
-
     }
 }

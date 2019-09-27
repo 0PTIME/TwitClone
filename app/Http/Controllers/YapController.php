@@ -43,13 +43,25 @@ class YapController extends Controller
     {
         $validatedData = $request->validate([
             'content' => 'required|max:255',
+            'retweet_of' => '',
+            'reply_of' => '',
         ]);
 
         $curYap = Yap::create([
             'content' => $validatedData['content'],
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
         ]);
+
+        if(isset($request['retweet_of'])){
+            $curYap->retweet_of = $request['retweet_of'];
+            $curYap->save();
+        }
         
+        if(isset($request['reply_of'])){
+            $curYap->reply_of = $request['reply_of'];
+            $curYap->save();
+        }
+
         if(isset($request->image)){
             $img = Image::make($request->image);
             $path = config('envars.tweet_media_path'). auth()->user()->id . $curYap->id . $request->image->getClientOriginalName();
@@ -70,9 +82,8 @@ class YapController extends Controller
      * @param  \App\Yap  $yap
      * @return \Illuminate\Http\Response
      */
-    public function show(Yap $yap)
-    {
-        //
+    public function show(Yap $yap){
+        return view('yap')->with(['tweet' => $yap]);
     }
 
     /**

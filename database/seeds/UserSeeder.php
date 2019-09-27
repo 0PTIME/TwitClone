@@ -53,7 +53,7 @@ class UserSeeder extends Seeder
             array(
                 'id' => '5',
                 'name' => 'vohihoisamod',
-                'email' => 'jebaited@lul.com',
+                'email' => 'vohiyo@lul.com',
                 'description' => 'VoHiYo',
                 'display_name' => 'VoHiYo',
                 'password' => Hash::make('vohiyo'),

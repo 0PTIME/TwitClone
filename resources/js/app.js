@@ -88,7 +88,7 @@ $(document).ready(function(){
         document.getElementById('tweetCoverId').style.display = "block";
     })
 
-    $('form[name="deleteForm"]').submit(function(e) {
+    $('form[name="deleteForm"]').one('submit', function(e) {
         e.preventDefault(); // avoid to execute the actual submit of the form. 
         var form = $(this);
         var url = form.attr('action'); 

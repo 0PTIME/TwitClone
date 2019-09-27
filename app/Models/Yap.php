@@ -54,4 +54,12 @@ class Yap extends Model
     public function retweets(){
         return $this->hasMany('App\Models\Yap', 'retweet_of');
     }
+
+    public function repliesFromOwner(){
+        $replies = Yap::where([
+            ['reply_of', $this->id],
+            ['user_id', $this->user_id],
+        ])->get();
+        return $replies;
+    }
 }
