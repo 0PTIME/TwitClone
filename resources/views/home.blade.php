@@ -78,14 +78,14 @@
             </div>
         </div>
         @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 
 
@@ -247,34 +247,52 @@
                         <img alt="loading" class="miniProfilePic" src="{{ route('profilePic', ['id' => $tweet->user_id,'size' => 50]) }}">
                     </div>
                     <div class="tweetContent">
-                        <div class="tweetOwnerName">
+                        <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">
                             <div class="tweetOwnerDisplayName">
                                 {{ $tweet->user->display_name }}
                             </div>
                             <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }} · </div>
-                        </div>
+                        </a>
                         <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
                         <div class="downArrWrapper" id="tweet{{ $tweet->id }}drop">
                             <div class="downArr"><img alt="loading" src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
                             <div class="dropdown-content show" id="tweet{{ $tweet->id }}dropdown">
-                                <div class="dropdownMenuItem" onclick="document.getElementById('delete{{ $tweet->id }}button').click();">
-                                    <form id="tweet{{ $tweet->id }}delete" action="{{ route('yap.destroy', ['yap' => $tweet->id])}}" name="deleteForm" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="hidden" name="tweet_owner" value="{{ $tweet->user_id }}">
-                                        <button id="delete{{ $tweet->id }}button" class="dropdownMenuItemButton" hidden></button>
-                                        <p>DELETE</p>
-                                    </form>
-                                </div>
-                                <div class="dropdownMenuItem">
-                                    <p>testing</p>
-                                </div>
-                                <div class="dropdownMenuItem">
-                                    <p>testing</p>
-                                </div>
-                                <div class="dropdownMenuItem">
-                                    <p>testing</p>
-                                </div>
+                                @if ($tweet->user_id == auth()->user()->id)
+                                    <div class="dropdownMenuItem" onclick="document.getElementById('delete{{ $tweet->id }}button').click();">
+                                        <form id="tweet{{ $tweet->id }}delete" action="{{ route('yap.destroy', ['yap' => $tweet->id])}}" name="deleteForm" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="tweet_owner" value="{{ $tweet->user_id }}">
+                                            <button id="delete{{ $tweet->id }}button" class="dropdownMenuItemButton" hidden></button>
+                                            <p>DELETE</p>
+                                        </form>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Pin to your profile</p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Embed Tweet</p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>View Tweet activity</p>
+                                    </div>
+                                @else
+                                    <div class="dropdownMenuItem">
+                                        <p>Embed Tweet</p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Unfollow <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Mute <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Block <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Report Tweet</p>
+                                    </div>                                
+                                @endif
                             </div>
                         </div>
                         <div class="tweetContentBody">
@@ -361,34 +379,52 @@
                         <img alt="loading" class="miniProfilePic" src="{{ route('profilePic', ['id' => $tweet->user_id,'size' => 50]) }}">
                     </div>
                     <div class="tweetContent">
-                        <div class="tweetOwnerName">
+                        <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">
                             <div class="tweetOwnerDisplayName">
                                 {{ $tweet->user->display_name }}
                             </div>
                             <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }} · </div>
-                        </div>
+                        </a>
                         <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
                         <div class="downArrWrapper" id="tweet{{ $tweet->id }}drop">
                             <div class="downArr"><img alt="loading" src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
                             <div class="dropdown-content show" id="tweet{{ $tweet->id }}dropdown">
-                                <div class="dropdownMenuItem" onclick="document.getElementById('delete{{ $tweet->id }}button').click();">
-                                    <form id="tweet{{ $tweet->id }}delete" action="{{ route('yap.destroy', ['yap' => $tweet->id])}}" name="deleteForm" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="hidden" name="tweet_owner" value="{{ $tweet->user_id }}">
-                                        <button id="delete{{ $tweet->id }}button" class="dropdownMenuItemButton" hidden></button>
-                                        <p>DELETE</p>
-                                    </form>
-                                </div>
-                                <div class="dropdownMenuItem">
-                                    <p>testing</p>
-                                </div>
-                                <div class="dropdownMenuItem">
-                                    <p>testing</p>
-                                </div>
-                                <div class="dropdownMenuItem">
-                                    <p>testing</p>
-                                </div>
+                                @if ($tweet->user_id == auth()->user()->id)
+                                    <div class="dropdownMenuItem" onclick="document.getElementById('delete{{ $tweet->id }}button').click();">
+                                        <form id="tweet{{ $tweet->id }}delete" action="{{ route('yap.destroy', ['yap' => $tweet->id])}}" name="deleteForm" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="tweet_owner" value="{{ $tweet->user_id }}">
+                                            <button id="delete{{ $tweet->id }}button" class="dropdownMenuItemButton" hidden></button>
+                                            <p>DELETE</p>
+                                        </form>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Pin to your profile</p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Embed Tweet</p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>View Tweet activity</p>
+                                    </div>
+                                @else
+                                    <div class="dropdownMenuItem">
+                                        <p>Embed Tweet</p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Unfollow <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Mute <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Block <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
+                                    </div>
+                                    <div class="dropdownMenuItem">
+                                        <p>Report Tweet</p>
+                                    </div>                                
+                                @endif
                             </div>
                         </div>
                         <div class="tweetContentBody">

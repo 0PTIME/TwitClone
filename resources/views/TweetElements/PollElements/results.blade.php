@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-
-<body style="background-color: transparent;">
+<div class="pollResultsWindow">
     <div class="mainPollResultsDisplay">
         <div class="graphBar {{ $tweet->poll->pollData()['winner'] == 'option_one' ? 'winner' : '' }}" id="tweet{{ $tweet->id }}graph_one" style="width: {{ $tweet->poll->pollData()['option_one'] }}%;">
             <p class="pollTextOption">{{ $tweet->poll->option_one }}</p>
@@ -73,6 +60,5 @@
             <p style="display: inline;">{{ $tweet->poll->submissions->count() }} People Voted</p>
         @endif
         <span style="display: inline;"> · {{ $tweet->poll->expiration_date }}</span> {{-- strtotime()->diffForHumans(null, true, true) --}}
-    </div> 
-</body>
-</html>
+    </div>
+</div>

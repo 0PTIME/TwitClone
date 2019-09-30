@@ -305,6 +305,7 @@ button{
     color: $twitterGrayText;
     display: inline-block;
     margin-bottom: 1px;
+    text-decoration: none;
     &:hover > .tweetOwnerDisplayName{
         text-decoration: underline;
     }
@@ -761,6 +762,11 @@ div[placeholder]:empty:before {
 
 .borderBottom{
     border-bottom: 1px solid $twitterBorder;
+}
+
+.pollResultsWindow{
+    width: 100%;
+    height: 100%;
 }
 
 .tweet{
