@@ -98,17 +98,35 @@ $(document).ready(function(){
             data: form.serialize(), // serializes the form's elements.
             success: function(data){                
                 if(data !== "fail"){
-                    document.getElementById(data).style.display = 'none';
+                    var ele = document.getElementById(data);
+                    ele.parentNode.removeChild(ele);
                 }
                 else{
                     alert("You didn't make this :O");
                 }
             },
             error: function(){
-                alert("error :(")
+                alert("error :(");
             },
         });    
     });
+
+    $('form[name="followForm"]').submit(function(e){
+        e.preventDefault();
+        var form = $(this);
+        var url = form.attr('action');
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            success: function(data){
+                $('.bigCoverTransparent').trigger('click');
+            },
+            error: function(){
+                alert("error :(");
+            },
+        });
+    })
 
     $('form[name="likeForm"]').submit(function(e){        
         e.preventDefault();

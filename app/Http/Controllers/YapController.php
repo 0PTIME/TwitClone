@@ -41,16 +41,39 @@ class YapController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'content' => 'required|max:255',
-            'retweet_of' => '',
-            'reply_of' => '',
-        ]);
+        if(isset($request['time_days']) && isset($request['option_one']) && isset($request['option_two'])){
+            $validatedData = $request->validate([
+                'content' => 'required|max:255',
+                'time_days' => 'required',
+                'option_one' => 'required|max:25',
+                'option_two' => 'required|max:25',
+                'option_three' => 'max:25',
+                'option_four' => 'max:25',
+            ]);    
+            $curYap = Yap::create([
+                'content' => $validatedData['content'],
+                'user_id' => auth()->user()->id
+            ]);
+            $date = Date('Y-m-d H:i:s', strtotime("+" . $validatedData['time_days'] . " days"));            
+            Poll::create([
+                'yap_id' => $curYap->id,
+                'expiration_date' => $date,
+                'option_one' => $validatedData['option_one'],
+                'option_two' => $validatedData['option_two'],
+                'option_three' => $validatedData['option_three'],
+                'option_four' => $validatedData['option_four'],
+            ]);
+        }
+        else{
+            $validatedData = $request->validate([
+                'content' => 'required|max:255',
+            ]);
+            $curYap = Yap::create([
+                'content' => $validatedData['content'],
+                'user_id' => auth()->user()->id,
+            ]);
+        }
 
-        $curYap = Yap::create([
-            'content' => $validatedData['content'],
-            'user_id' => auth()->user()->id,
-        ]);
 
         if(isset($request['retweet_of'])){
             $curYap->retweet_of = $request['retweet_of'];
@@ -117,7 +140,7 @@ class YapController extends Controller
      */
     public function destroy(Yap $yap)
     {
-        if(request('tweet_owner') == auth()->user()->id){
+        if($yap->user_id === auth()->user()->id){
             $yap->delete();
             echo "tweet" . $yap->id;
         }

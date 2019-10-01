@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Follow;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -76,5 +77,16 @@ class User extends Authenticatable
 
     public function followers(){
         return $this->hasMany('App\Models\Follow', 'follower_id');
+    }
+
+    public function followed(){
+        $follow = Follow::where([
+            ['follower_id', auth()->user()->id],
+            ['followed_id', $this->id],
+        ])->first();        
+        if($follow){
+            return true;
+        }
+        else { return false; }
     }
 }

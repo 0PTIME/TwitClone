@@ -38,6 +38,8 @@ Route::post('/pollsubmission/{id}', 'PollController@submitOption')->name('poll.s
 Route::get('/pollresults/{id}', 'PollController@showResults')->name('displaypoll.results');
 Route::post('pollvoting', 'PollController@showVoting')->name('voting');
 
+Route::post('follow/{user}', 'FollowController@follow')->name('follow');
+
 
 Route::prefix('asset')->group(function(){
     Route::get('icon/{name}/{state?}/{size?}', 'AssetController@icon')->name('icon');

@@ -84,7 +84,7 @@
             <div class="tweetComposerContent">
                 <div class="tweetComposerContentBody" id="conetenteditableTwo" placeholder="Ask a question..." contenteditable></div>
                 <div>
-                    <form action="{{ route('yap.poll') }}" name="tweetCompFUTwo" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('yap.store') }}" name="tweetCompFUTwo" method="POST" enctype="multipart/form-data">
                         @csrf
                         <textarea name="content" id="textInputTwo" hidden></textarea>                    
                         <div class="pollMain">
@@ -190,8 +190,6 @@
         @if ($main->reply_of)
             @if (App\Models\Yap::find($main->reply_of))
                 @include('tweet', ['reply' => App\Models\Yap::find($main->reply_of)])
-            @else
-                @include('tweet')
             @endif
         @elseif ($main->retweet_of)
             @if (App\Models\Yap::find($main->retweet_of))

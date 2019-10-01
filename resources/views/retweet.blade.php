@@ -17,7 +17,7 @@
             <div class="tweetContent">
                 @include('TweetElements.titleone', ['tweet' => $retweet])
                 @if ($retweet->content)
-                    @include('TweetElements.bodyone', ['tweet' => $retweet])                
+                    @include('TweetElements.bodyone', ['tweet' => $retweet])
                 @endif
                 @if ($retweet->media->first())
                     @include('TweetElements.imgone', ['tweet' => $retweet])
