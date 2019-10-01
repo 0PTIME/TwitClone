@@ -1,13 +1,8 @@
 @extends('layouts.home')
 
 
-
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- ************************************************************************************** --}}
 {{-- ************************************PAGE HEADER*************************************** --}}
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- ************************************************************************************** --}}
 @section('pageHeader')
     <div class="mainHeader">
@@ -18,11 +13,7 @@
 
 
 {{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- *************************************PAGE TITLE*************************************** --}}
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- ************************************************************************************** --}}
 @section('pageTitle')
     Home
@@ -30,11 +21,7 @@
 
 
 {{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- ***********************************TWEET COMPOSER************************************* --}}
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- ************************************************************************************** --}}
 @section('tweetComposer')
     <div class="tweetComposer clearfixing" id="mainContentId">
@@ -195,367 +182,23 @@
 
 
 {{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- ************************************HOME CONTENT************************************** --}}
-{{-- ************************************************************************************** --}}
-{{-- ************************************************************************************** --}}
 {{-- ************************************************************************************** --}}
 @section('content')
     <div class="bigCoverTransparent show" id="tweetCoverId"></div>
-    @foreach ($tweets as $tweet)
-        @if ($tweet->media->first())
-            <div class="showTweetImgContainer show">
-                <div class="showTweetImg" id="showTweetImgId{{ $tweet->id }}">
-                    <img alt="loading" src="{{ route('tweetMedia', ['id' => $tweet->id]) }}" class="fullImg">
-                </div>
-            </div>            
-        @endif
-        {{-- ********************************************************* --}}
-        {{-- **********************RETWEET TWEET********************** --}}
-        {{-- ********************************************************* --}}
-        @if ($tweet->retweet_of !== null)
-            <div class="tweet borderBottom" id="tweet{{ $tweet->id }}">
-                <div class="tweetHeader">
-                    <div class="tweetHeaderPicWrapper">
-                        <img alt="loading" class="tweetHeaderPic" src="{{ route('icon', ['name' => 'retweet', 'state' => 'Black', 'size' => '12']) }}">
-                    </div>
-                    <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">{{ $tweet->user->name === auth()->user()->name ? 'You' : $tweet->user->display_name }} Retweeted</a>
-                </div>
-            </div>
-        @endif
-        {{-- ********************************************************* --}}
-        {{-- ***********************REPLY TWEET*********************** --}}
-        {{-- ********************************************************* --}}
-        @if ($tweet->reply_of !== null)
-            <div class="tweet borderBottom" id="tweet{{ $tweet->id }}">
-                <div class="tweetHeader">
-                    <div class="tweetHeaderPicWrapper">
-                        <img alt="loading" class="tweetHeaderPic" src="{{ route('icon', ['name' => 'retweet', 'state' => 'Black', 'size' => '12']) }}">
-                    </div>
-                    <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">{{ $tweet->user->name === auth()->user()->name ? 'You' : $tweet->user->display_name }} Replied</a>
-                </div>
-            </div>
-        @endif
-        {{-- ********************************************************* --}}
-        {{-- ************************POLL TWEET*********************** --}}
-        {{-- ********************************************************* --}}
-        @if ($tweet->poll !== null)
-            <div class="tweet borderBottom" id="tweet{{ $tweet->id }}">
-                <div class="tweetBody">
-                    <div class="tweetProfile">
-                        <img alt="loading" class="miniProfilePic" src="{{ route('profilePic', ['id' => $tweet->user_id,'size' => 50]) }}">
-                    </div>
-                    <div class="tweetContent">
-                        <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">
-                            <div class="tweetOwnerDisplayName">
-                                {{ $tweet->user->display_name }}
-                            </div>
-                            <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }} · </div>
-                        </a>
-                        <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
-                        <div class="downArrWrapper" id="tweet{{ $tweet->id }}drop">
-                            <div class="downArr"><img alt="loading" src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
-                            <div class="dropdown-content show" id="tweet{{ $tweet->id }}dropdown">
-                                @if ($tweet->user_id == auth()->user()->id)
-                                    <div class="dropdownMenuItem" onclick="document.getElementById('delete{{ $tweet->id }}button').click();">
-                                        <form id="tweet{{ $tweet->id }}delete" action="{{ route('yap.destroy', ['yap' => $tweet->id])}}" name="deleteForm" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="hidden" name="tweet_owner" value="{{ $tweet->user_id }}">
-                                            <button id="delete{{ $tweet->id }}button" class="dropdownMenuItemButton" hidden></button>
-                                            <p>DELETE</p>
-                                        </form>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Pin to your profile</p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Embed Tweet</p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>View Tweet activity</p>
-                                    </div>
-                                @else
-                                    <div class="dropdownMenuItem">
-                                        <p>Embed Tweet</p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Unfollow <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Mute <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Block <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Report Tweet</p>
-                                    </div>                                
-                                @endif
-                            </div>
-                        </div>
-                        <div class="tweetContentBody">
-                            @if ($tweet->content)
-                                <p>{{ $tweet->content }}</p>                            
-                            @endif
-                            @if ($tweet->poll)
-                                @if ($tweet->poll->expired() || $tweet->user_id === auth()->user()->id || $tweet->poll->voted())
-                                    <iframe class="iframeDisplay" src="{{ route('displaypoll.results', ['id' => $tweet->id])}}" frameborder="0" style="height: {{ ($tweet->poll->numOpt() * 40) + 17 }}px"></iframe>                                  
-                                @else
-                                    <form action="{{ route('poll.submit', ['id' => $tweet->id])}}" method="POST" name="pollSubmissionForm">
-                                        @csrf
-                                        <div class="pollDisplayOptions" id="tweet{{ $tweet->id }}polloptions">
-                                            <div class="pollDisplayOption" id="tweet{{ $tweet->id }}.1">
-                                                <p>{{ $tweet->poll->option_one }}</p>
-                                                <button type="submit" hidden></button>
-                                            </div>
-                                            <div class="pollDisplayOption" id="tweet{{ $tweet->id }}.2">
-                                                    <button type="submit" hidden></button>
-                                                    <p>{{ $tweet->poll->option_two }}</p>
-                                            </div>
-                                            @if ($tweet->poll->option_three)
-                                                <div class="pollDisplayOption" id="tweet{{ $tweet->id }}.3">
-                                                    <button type="submit" hidden></button>
-                                                    <p>{{ $tweet->poll->option_three }}</p>
-                                                </div>                                        
-                                            @endif
-                                            @if ($tweet->poll->option_four)
-                                                <div class="pollDisplayOption" id="tweet{{ $tweet->id }}.4">
-                                                    <button type="submit" hidden></button>
-                                                    <p>{{ $tweet->poll->option_four }}</p>
-                                                </div>                                        
-                                            @endif                                    
-                                        </div>
-                                        <iframe id="tweet{{ $tweet->id }}resultsiframe" class="iframeDisplay show" src="{{ route('displaypoll.results', ['id' => $tweet->id])}}" frameborder="0" style="height: {{ ($tweet->poll->numOpt() * 40) + 17 }}px"></iframe>                                  
-                                    </form>
-                                @endif
-                            @endif
-                        </div>
-                        <div class="tweetContentFooter">
-                            <div class="tweetFooterItem" onclick="location.href='{{ route('yap.show', ['yap' => $tweet->id])}}'">
-                                <div class="tweetFooterIconWrapper">
-                                    <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'comment', 'state' => 'Black', 'size' => '18']) }}">
-                                    <span class="tweetFooterNum">{{ $tweet->replies->count() === 0 ? '' : $tweet->replies->count() }}</span>
-                                </div>
-                            </div>
-                            <div class="tweetFooterItem">
-                                <form name="retweetForm" action="{{ route('retweet', ['id' => $tweet->id]) }}" method="POST">
-                                    <div class="tweetFooterGreenIconWrapper" onclick="document.getElementById('retweet{{ $tweet->id }}button').click();">
-                                        <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'retweet', 'state' => $tweet->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
-                                        <span class="{{ $tweet->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'greenText' : '' }} tweetFooterNum">{{ $tweet->retweets->count() === 0 ? '' : $tweet->retweets->count() }}</span>
-                                    </div>
-                                    @csrf 
-                                    <button id="retweet{{ $tweet->id }}button" hidden></button>
-                                </form>
-                            </div>
-                            <div class="tweetFooterItem">
-                                <form name="likeForm" action="{{ route('like', ['id' => $tweet->id]) }}" method="POST">
-                                    <div class="tweetFooterRedIconWrapper" onclick="document.getElementById('like{{ $tweet->id }}button').click();">
-                                        <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'heart', 'state' => $tweet->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
-                                        <span class="{{ $tweet->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'redText' : '' }} tweetFooterNum">{{ $tweet->likes->count() === 0 ? '' : $tweet->likes->count() }}</span>
-                                    </div>
-                                    @csrf
-                                    <button id="like{{ $tweet->id }}button" hidden></button>
-                                </form>
-                            </div>
-                            <div class="tweetFooterItem">
-                                <div class="tweetFooterIconWrapper">
-                                    <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'upload', 'state' => 'Black', 'size' => '18']) }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-        @endif
-        {{-- ********************************************************* --}}
-        {{-- ***********************REG TWEET************************* --}}
-        {{-- ********************************************************* --}}
-        @if ($tweet->reply_of === null && $tweet->retweet_of === null && $tweet->poll === null)
-            <div class="tweet borderBottom" id="tweet{{ $tweet->id }}">
-                <div class="tweetBody">
-                    <div class="tweetProfile">
-                        <img alt="loading" class="miniProfilePic" src="{{ route('profilePic', ['id' => $tweet->user_id,'size' => 50]) }}">
-                    </div>
-                    <div class="tweetContent">
-                        <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">
-                            <div class="tweetOwnerDisplayName">
-                                {{ $tweet->user->display_name }}
-                            </div>
-                            <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }} · </div>
-                        </a>
-                        <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
-                        <div class="downArrWrapper" id="tweet{{ $tweet->id }}drop">
-                            <div class="downArr"><img alt="loading" src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
-                            <div class="dropdown-content show" id="tweet{{ $tweet->id }}dropdown">
-                                @if ($tweet->user_id == auth()->user()->id)
-                                    <div class="dropdownMenuItem" onclick="document.getElementById('delete{{ $tweet->id }}button').click();">
-                                        <form id="tweet{{ $tweet->id }}delete" action="{{ route('yap.destroy', ['yap' => $tweet->id])}}" name="deleteForm" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="hidden" name="tweet_owner" value="{{ $tweet->user_id }}">
-                                            <button id="delete{{ $tweet->id }}button" class="dropdownMenuItemButton" hidden></button>
-                                            <p>DELETE</p>
-                                        </form>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Pin to your profile</p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Embed Tweet</p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>View Tweet activity</p>
-                                    </div>
-                                @else
-                                    <div class="dropdownMenuItem">
-                                        <p>Embed Tweet</p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Unfollow <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Mute <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Block <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }}</div></p>
-                                    </div>
-                                    <div class="dropdownMenuItem">
-                                        <p>Report Tweet</p>
-                                    </div>                                
-                                @endif
-                            </div>
-                        </div>
-                        <div class="tweetContentBody">
-                            @if ($tweet->content)
-                                <p>{{ $tweet->content }}</p>                            
-                            @endif
-                            @if ($tweet->media->first())
-                                <img alt="loading" class="tweetPicture" onclick="showTweetImg({{ $tweet->id }})" src="{{ route('tweetMedia', ['id' => $tweet->id]) }}">
-                            @endif
-                        </div>
-                        <div class="tweetContentFooter">
-                            <div class="tweetFooterItem" onclick="location.href='{{ route('yap.show', ['yap' => $tweet->id])}}'">
-                                <div class="tweetFooterIconWrapper">
-                                    <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'comment', 'state' => 'Black', 'size' => '18']) }}">
-                                    <span class="tweetFooterNum">{{ $tweet->replies->count() === 0 ? '' : $tweet->replies->count() }}</span>
-                                </div>
-                            </div>
-                            <div class="tweetFooterItem">
-                                <form name="retweetForm" action="{{ route('retweet', ['id' => $tweet->id]) }}" method="POST">
-                                    <div class="tweetFooterGreenIconWrapper" onclick="document.getElementById('retweet{{ $tweet->id }}button').click();">
-                                        <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'retweet', 'state' => $tweet->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
-                                        <span class="{{ $tweet->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'greenText' : '' }} tweetFooterNum">{{ $tweet->retweets->count() === 0 ? '' : $tweet->retweets->count() }}</span>
-                                    </div>
-                                    @csrf 
-                                    <button id="retweet{{ $tweet->id }}button" hidden></button>
-                                </form>
-                            </div>
-                            <div class="tweetFooterItem">
-                                <form name="likeForm" action="{{ route('like', ['id' => $tweet->id]) }}" method="POST">
-                                    <div class="tweetFooterRedIconWrapper" onclick="document.getElementById('like{{ $tweet->id }}button').click();">
-                                        <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'heart', 'state' => $tweet->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
-                                        <span class="{{ $tweet->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'redText' : '' }} tweetFooterNum">{{ $tweet->likes->count() === 0 ? '' : $tweet->likes->count() }}</span>
-                                    </div>
-                                    @csrf
-                                    <button id="like{{ $tweet->id }}button" hidden></button>
-                                </form>
-                            </div>
-                            <div class="tweetFooterItem">
-                                <div class="tweetFooterIconWrapper">
-                                    <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'upload', 'state' => 'Black', 'size' => '18']) }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @if ($tweet->repliesFromOwner())
-                @foreach ($tweet->repliesFromOwner() as $reply)
-                    <div class="tweet" id="tweet{{ $reply->id }}">
-                        <div class="tweetBody">
-                            <div class="tweetProfile">
-                                <img alt="loading" class="miniProfilePic" src="{{ route('profilePic', ['id' => $reply->user_id,'size' => 50]) }}">
-                            </div>
-                            <div class="tweetContent">
-                                <div class="tweetOwnerName">
-                                    <div class="tweetOwnerDisplayName">
-                                        {{ $reply->user->display_name }}
-                                    </div>
-                                    <div style="display: inline;">@</div><div style="display: inline;">{{ $reply->user->name }} · </div>
-                                </div>
-                                <div class="timeForHumans" title="{{ $reply->created_at->format('g:i A') }} · {{ $reply->created_at->format('M j, Y') }}">{{ $reply->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
-                                <div class="downArrWrapper" id="tweet{{ $reply->id }}drop">
-                                    <div class="downArr"><img alt="loading" src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
-                                    <div class="dropdown-content show" id="tweet{{ $reply->id }}dropdown">
-                                        <div class="dropdownMenuItem" onclick="document.getElementById('delete{{ $reply->id }}button').click();">
-                                            <form id="tweet{{ $reply->id }}delete" action="{{ route('yap.destroy', ['yap' => $reply->id])}}" name="deleteForm" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input type="hidden" name="tweet_owner" value="{{ $reply->user_id }}">
-                                                <button id="delete{{ $reply->id }}button" class="dropdownMenuItemButton" hidden></button>
-                                                <p>DELETE</p>
-                                            </form>
-                                        </div>
-                                        <div class="dropdownMenuItem">
-                                            <p>testing</p>
-                                        </div>
-                                        <div class="dropdownMenuItem">
-                                            <p>testing</p>
-                                        </div>
-                                        <div class="dropdownMenuItem">
-                                            <p>testing</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tweetContentBody">
-                                    @if ($reply->content)
-                                        <p>{{ $reply->content }}</p>                            
-                                    @endif
-                                    @if ($reply->media->first())
-                                        <img alt="loading" class="tweetPicture" onclick="showTweetImg({{ $reply->id }})" src="{{ route('tweetMedia', ['id' => $reply->id]) }}">
-                                    @endif
-                                </div>
-                                <div class="tweetContentFooter">
-                                    <div class="tweetFooterItem">
-                                        <div class="tweetFooterIconWrapper">
-                                            <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'comment', 'state' => 'Black', 'size' => '18']) }}">
-                                            <span class="tweetFooterNum">{{ $reply->replies->count() === 0 ? '' : $reply->replies->count() }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="tweetFooterItem">
-                                        <form name="retweetForm" action="{{ route('retweet', ['id' => $reply->id]) }}" method="POST">
-                                            <div class="tweetFooterGreenIconWrapper" onclick="document.getElementById('retweet{{ $reply->id }}button').click();">
-                                                <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'retweet', 'state' => $reply->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
-                                                <span class="{{ $reply->retweets->where('user_id', auth()->user()->id)->count() === 1 ? 'greenText' : '' }} tweetFooterNum">{{ $reply->retweets->count() === 0 ? '' : $reply->retweets->count() }}</span>
-                                            </div>
-                                            @csrf 
-                                            <button id="retweet{{ $reply->id }}button" hidden></button>
-                                        </form>
-                                    </div>
-                                    <div class="tweetFooterItem">
-                                        <form name="likeForm" action="{{ route('like', ['id' => $reply->id]) }}" method="POST">
-                                            <div class="tweetFooterRedIconWrapper" onclick="document.getElementById('like{{ $reply->id }}button').click();">
-                                                <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'heart', 'state' => $reply->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'Active' : 'Black', 'size' => '18']) }}">
-                                                <span class="{{ $reply->likes->where('user_id', auth()->user()->id)->count() === 1 ? 'redText' : '' }} tweetFooterNum">{{ $reply->likes->count() === 0 ? '' : $reply->likes->count() }}</span>
-                                            </div>
-                                            @csrf
-                                            <button id="like{{ $reply->id }}button" hidden></button>
-                                        </form>
-                                    </div>
-                                    <div class="tweetFooterItem">
-                                        <div class="tweetFooterIconWrapper">
-                                            <img alt="loading" class="tweetFooterIcon" src="{{ route('icon', ['name' => 'upload', 'state' => 'Black', 'size' => '18']) }}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                @endforeach
+    @foreach ($tweets as $main)
+        @if ($main->reply_of)
+            @if (App\Models\Yap::find($main->reply_of))
+                @include('tweet', ['reply' => App\Models\Yap::find($main->reply_of)])
+            @else
+                @include('tweet')
             @endif
+        @elseif ($main->retweet_of)
+            @if (App\Models\Yap::find($main->retweet_of))
+                @include('retweet', ['retweet' => App\Models\Yap::find($main->retweet_of)])
+            @endif
+        @else
+            @include('tweet')
         @endif
     @endforeach    
 @endsection

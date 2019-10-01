@@ -83,7 +83,7 @@ class YapController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Yap $yap){
-        return view('yap')->with(['tweet' => $yap]);
+        return view('yap')->with(['main' => $yap]);
     }
 
     /**

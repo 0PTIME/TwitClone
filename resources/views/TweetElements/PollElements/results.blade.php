@@ -59,6 +59,6 @@
         @if ($tweet->poll->submissions !== null)
             <p style="display: inline;">{{ $tweet->poll->submissions->count() }} People Voted</p>
         @endif
-        <span style="display: inline;"> · {{ $tweet->poll->expiration_date }}</span> {{-- strtotime()->diffForHumans(null, true, true) --}}
+        <span style="display: inline;"> · {{ $tweet->poll->expiration_date->diffForHumans() }}</span> {{-- strtotime()->diffForHumans(null, true, true) --}}
     </div>
 </div>

@@ -717,7 +717,7 @@ div[placeholder]:empty:before {
 }
 
 .mainPollResultsDisplay{
-    width: 85vw;
+    width: 85%;
     display: inline-block;
     .graphBar{
         height: 20px;
@@ -734,6 +734,7 @@ div[placeholder]:empty:before {
 
 .leftPollResultsDisplay{
     float: right;
+    width: 10%;
     .percent{
         height: 20px;
         text-align: center;
@@ -769,6 +770,10 @@ div[placeholder]:empty:before {
     height: 100%;
 }
 
+.marginfifteentop{
+    margin-top: 15px;
+}
+
 .tweet{
     cursor: pointer;
     padding-left: 10px;
@@ -786,34 +791,6 @@ div[placeholder]:empty:before {
             padding-right: 20vw;
             border-radius: 15px;
             background-color: $twitterDarkSlateGray;
-        }
-    }
-    .tweetHeader{
-        font-size: 12px;
-        margin-top: 2px;
-        margin-bottom: 2px;
-        .tweetHeaderPicWrapper{
-            margin-right: 5px;
-            margin-left: 5px;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            width: 50px;
-            float: left;
-            .tweetHeaderPic{
-                float: right;
-            }
-        }
-        .tweetOwnerName{
-            text-decoration: none;
-            float: right;
-            margin-right: 5px;
-            margin-left: 5px;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            width: calc(100% - 70px);
-            &:hover{
-                text-decoration: underline;
-            }
         }
     }
     .tweetBody{
@@ -892,6 +869,34 @@ div[placeholder]:empty:before {
                     }
                 }
             }
+        }
+    }
+}
+.tweetHeader{
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    position: absolute;
+    .tweetHeaderPicWrapper{
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        width: 58px;
+        float: left;
+        .tweetHeaderPic{
+            float: right;
+        }
+    }
+    .tweetOwnerName{
+        text-decoration: none;
+        float: right;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        &:hover{
+            text-decoration: underline;
         }
     }
 }

@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Poll extends Model
 {
+    protected $dates = [
+        'expiration_date'        
+    ];
     protected $guarded = [];
     public $timestamps = false;
+    
 
     public function yap(){
         return $this->belongsTo('App\Models\Yap');
