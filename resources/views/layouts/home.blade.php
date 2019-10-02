@@ -144,8 +144,9 @@
             <div class="rightContentHolder">
                 <div class="rightMainContent" id="rightMain">
                     <div class="homesearch">
-                        <form action="search" class="searchBar" method="GET">
-                            <input data-emojiable="true" type="text" class="searchInput" name="keyword" autocomplete="off" placeholder="Seach Yapper">
+                        <form action="{{ route('search' )}}" class="searchBar" method="POST">
+                            @csrf
+                            <input type="text" class="searchInput" name="searched" autocomplete="off" placeholder="Seach Yapper">
                         </form>
                     </div>
                     <div class="defaultPlaceholder"></div>

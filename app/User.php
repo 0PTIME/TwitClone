@@ -79,6 +79,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Follow', 'follower_id');
     }
 
+    public function follows(){
+        return $this->hasMany('App\Models\Follow', 'followed_id');
+    }
+
     public function followed(){
         $follow = Follow::where([
             ['follower_id', auth()->user()->id],
