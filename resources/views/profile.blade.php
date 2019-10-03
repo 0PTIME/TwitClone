@@ -8,7 +8,7 @@
 @endsection
 
 @section('pageTitle')
-    {{ $main->display_name }}
+    {{ $user->display_name }}
 @endsection
 
 @section('content')
@@ -18,12 +18,14 @@
         </div>
         <div class="bottomHalfProfile">
             <div class="profileContent">
-                @include('ProfileElements.actionbarone', ['user' => $main])
-                @include('ProfileElements.titleone', ['user' => $main])
-                @include('ProfileElements.description', ['user' => $main])
-                @include('ProfileElements.followerstats', ['user' => $main])
+                @include('ProfileElements.actionbarone', ['user' => $user])
+                @include('ProfileElements.titleone', ['user' => $user])
+                @include('ProfileElements.description', ['user' => $user])
+                @include('ProfileElements.followerstats', ['user' => $user])
             </div>
         </div>
-
+        @foreach ($tweets as $main)
+            @include('tweettree', ['main' => $main])
+        @endforeach
     </div> 
 @endsection

@@ -14,7 +14,8 @@ class ProfileController extends Controller
     public function index($name){
         $user = User::where('name', '=', $name)->firstOrFail();
         if($user){
-            return view('profile')->with('main', $user);
+            $tweets = $user->yaps->reverse();
+            return view('profile')->with('user', $user)->with('tweets', $tweets);
         }
     }
 }
