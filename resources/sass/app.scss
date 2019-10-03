@@ -900,3 +900,104 @@ div[placeholder]:empty:before {
         }
     }
 }
+.topHalfProfile{
+    width: 100%;
+    min-height: 200px;
+    background-color: $twitterBorder;
+}
+
+.bottomHalfProfile{
+    width: 100%;
+    min-height: 200px;
+    background-color: transparent;
+    border-bottom: 1px solid $twitterBorder;
+    .profileContent{
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        margin-bottom: 15px;
+    }
+}
+
+.oneActionBarContainer{
+    min-height: 50px;
+    width: 100%;
+    .oneActionBarProfilePicWrapper{
+        width: 25%;
+        min-height: 45px;
+        min-width: 45px;
+        max-height: 135px;
+        max-width: 135px;
+        position: absolute;
+        margin-top: -10vh;
+        .oneActionBarProfilePic{
+            width: 100%;
+            height: 100%;
+            border: 4px solid $twitterDark;
+            border-radius: 50%;
+        }
+    }
+
+    .oneActionBarButtons{
+        margin-left: 5px;
+        margin-right: 5px;
+        float: right;
+        margin-top: 15px;
+        .actionBarButton{            
+            margin: 5px;
+            display: inline;
+            padding: 5px;
+            border: 1px solid $twitterBlue;
+            border-radius: 25px;
+            color: $twitterBlue;
+            cursor: pointer;
+            &:hover{
+                background-color: $twitterBlueHighlight;
+            }
+        }
+    }
+}
+
+.titleOneContainer{
+    width: 100%;
+    margin-bottom: 10px;
+    .titleOneDisplayNameContainer{
+        width: 100%;
+        .titleOneDisplayName{
+            color: white;
+            font-size: 19px;
+            font-weight: bold;
+        }
+    }
+
+    .titleOneNameContainer{
+        width: 100%;
+        .titleOneName{
+            font-size: 15px;
+            color: $twitterFooterText;
+        }
+    }
+}
+
+.descriptionContainer{
+    width: 100%;
+    margin-bottom: 10px;
+    .profileDescription{
+        font-size: 15px;
+
+    }
+}
+
+.followerStatsContainer{
+    width: 100%;
+    margin-bottom: 10px;
+    .followerCount{
+        margin-right: 10px;
+        display: inline;
+    }
+}
+
+.footerText{
+    color: $twitterFooterText;
+    font-size: 15px;
+}

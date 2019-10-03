@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -11,7 +12,9 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
     public function index($name){
-        
-        return view('profile');
+        $user = User::where('name', '=', $name)->firstOrFail();
+        if($user){
+            return view('profile')->with('main', $user);
+        }
     }
 }
