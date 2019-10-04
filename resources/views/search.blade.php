@@ -29,7 +29,7 @@
     @if (!isset($message))
         @if (isset($users))
             @foreach ($users as $main)
-                
+                @include('profiletwo')
             @endforeach            
         @endif
     @else

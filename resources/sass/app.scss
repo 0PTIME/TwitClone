@@ -774,6 +774,12 @@ div[placeholder]:empty:before {
     margin-top: 15px;
 }
 
+.tweetProfile{
+    margin-right: 10px;
+    width: 50px;
+    float: left;
+}
+
 .tweet{
     cursor: pointer;
     padding-left: 10px;
@@ -797,11 +803,6 @@ div[placeholder]:empty:before {
         width: 100%;
         padding-top: 10px;
         height: fit-content;
-        .tweetProfile{
-            margin-right: 10px;
-            width: 50px;
-            float: left;
-        }
         .tweetContent{
             float: right;
             width: calc(100% - 60px);

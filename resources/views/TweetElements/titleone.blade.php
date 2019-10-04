@@ -1,9 +1,9 @@
 <div class="tweetTitleContainer">
-    <a href="{{ route('profile', ['name' => $tweet->user->name]) }}" class="tweetOwnerName">
+    <a href="{{ route('profile', ['name' => $user->name]) }}" class="tweetOwnerName">
         <div class="tweetOwnerDisplayName">
-            {{ $tweet->user->display_name }}
+            {{ $user->display_name }}
         </div>
-        <div style="display: inline;">@</div><div style="display: inline;">{{ $tweet->user->name }} · </div>
+        <div style="display: inline;">@</div><div style="display: inline;">{{ $user->name }} · </div>
     </a>
     <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
     <div class="downArrWrapper" id="tweet{{ $tweet->id }}drop">

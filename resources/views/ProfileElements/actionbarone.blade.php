@@ -10,7 +10,8 @@
         </div>
         <div class="actionBarButton">
         </div>
-        <div class="actionBarButton">
+        <div class="actionBarButton" onclick="document.getElementById('user{{ $user->id }}followbutton').click();">
+            @include('ProfileElements.followform')
             <span>Follow</span>
         </div>
     </div>
