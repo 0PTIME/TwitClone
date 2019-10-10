@@ -1,7 +1,9 @@
 @extends('layouts.home')
 
 @section('pageHeader')
-Messages
+    <div class="mainHeader">
+        <p class="globalHeader">Messages</p>
+    </div>
 @endsection
 
 @section('pageTitle')

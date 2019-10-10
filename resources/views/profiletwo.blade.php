@@ -1,6 +1,6 @@
 <div class="profileTwoContainer borderBottom">
     @include('TweetElements.profilepic', ['user' => $main])
-    <div>
+    <div class="titletwoContainer">
         @include('ProfileElements.titleone', ['user' => $main])
         @include('ProfileElements.description', ['user' => $main])
         @include('ProfileElements.followform', ['user' => $main])

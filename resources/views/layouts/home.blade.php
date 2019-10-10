@@ -134,67 +134,77 @@
             </div>
         </div>
     </div>
-    <div class="main">
-        @yield('pageHeader')
-        @yield('tweetComposer')
-        @yield('content')
-    </div>
-    <div class="rightMain">
-        <div class="rightPlaceholder">
-            <div class="rightContentHolder">
-                <div class="rightMainContent" id="rightMain">
-                    <div class="homesearch">
-                        <form action="{{ route('search' )}}" class="searchBar" method="POST">
-                            @csrf
-                            <input type="text" class="searchInput" name="searched" autocomplete="off" placeholder="Seach Yapper">
-                        </form>
+    @if (Route::currentRouteName() === 'messages')
+        <div class="rightMain">
+                @yield('pageHeader')
+                @yield('content')
+        </div>
+        <div class="main">
+            
+        </div>
+    @else
+        <div class="main">
+            @yield('pageHeader')
+            @yield('tweetComposer')
+            @yield('content')
+        </div>
+        <div class="rightMain">
+            <div class="rightPlaceholder">
+                <div class="rightContentHolder">
+                    <div class="rightMainContent" id="rightMain">
+                        <div class="homesearch">
+                            <form action="{{ route('search' )}}" class="searchBar" method="POST">
+                                @csrf
+                                <input type="text" class="searchInput" name="searched" autocomplete="off" placeholder="Seach Yapper">
+                            </form>
+                        </div>
+                        <div class="defaultPlaceholder"></div>
+                        <div class="twitterItem">
+                            <h1 class="globalHeader">TRENDING</h1>
+                            <div class="twitterItemContent"></div>
+                            <div class="twitterItemContent">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie eros vel vehicula rutrum.
+                            </div>
+                            <div class="twitterItemContent">
+                                Duis a tincidunt orci. Ut et diam ut ipsum aliquam dignissim a id tellus.
+                            </div>
+                            <div class="twitterItemContent">
+                                Sed id vestibulum nisl, eu convallis quam.
+                            </div>
+                            <div class="twitterItemContent">
+                                Cras id tincidunt lectus. Phasellus cursus ullamcorper sodales. Vestibulum diam nisl, egestas sed odio eget, tempor varius tellus. Vestibulum eu neque at tellus tristique volutpat. Proin vel mattis tellus, eget pellentesque sem. Pellentesque vitae lorem pulvinar, sollicitudin libero id, finibus sapien.
+                            </div>
+                            <div class="twitterItemContent">
+                                Suspendisse ligula orci, rutrum ut mollis non, commodo ut ligula.
+                            </div>
+                            <div class="twitterItemContent">
+                                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                            </div>
+                        </div>
+                        <div class="twitterItem">
+                            <h1 class="globalHeader">RECOMENDATIONS</h1>
+                            <div class="twitterItemContent"></div>
+                            <div class="twitterItemContent">
+                                Aliquam sed congue ipsum.
+                            </div>
+                            <div class="twitterItemContent">
+                                In quis vestibulum purus.
+                            </div>
+                            <div class="twitterItemContent">
+                                Donec lectus dui, cursus eu hendrerit non, condimentum vel tortor.
+                            </div>
+                            <div class="twitterItemContent">
+                                Pellentesque ut nunc eleifend, varius est non, facilisis justo.
+                            </div>
+                            <div class="twitterItemContent">
+                                Aenean vitae nunc in mi pulvinar egestas.
+                            </div>
+                        </div>
+                        <div id="stickyId"></div>
                     </div>
-                    <div class="defaultPlaceholder"></div>
-                    <div class="twitterItem">
-                        <h1 class="globalHeader">TRENDING</h1>
-                        <div class="twitterItemContent"></div>
-                        <div class="twitterItemContent">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie eros vel vehicula rutrum.
-                        </div>
-                        <div class="twitterItemContent">
-                            Duis a tincidunt orci. Ut et diam ut ipsum aliquam dignissim a id tellus.
-                        </div>
-                        <div class="twitterItemContent">
-                            Sed id vestibulum nisl, eu convallis quam.
-                        </div>
-                        <div class="twitterItemContent">
-                            Cras id tincidunt lectus. Phasellus cursus ullamcorper sodales. Vestibulum diam nisl, egestas sed odio eget, tempor varius tellus. Vestibulum eu neque at tellus tristique volutpat. Proin vel mattis tellus, eget pellentesque sem. Pellentesque vitae lorem pulvinar, sollicitudin libero id, finibus sapien.
-                        </div>
-                        <div class="twitterItemContent">
-                            Suspendisse ligula orci, rutrum ut mollis non, commodo ut ligula.
-                        </div>
-                        <div class="twitterItemContent">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                        </div>
-                    </div>
-                    <div class="twitterItem">
-                        <h1 class="globalHeader">RECOMENDATIONS</h1>
-                        <div class="twitterItemContent"></div>
-                        <div class="twitterItemContent">
-                            Aliquam sed congue ipsum.
-                        </div>
-                        <div class="twitterItemContent">
-                            In quis vestibulum purus.
-                        </div>
-                        <div class="twitterItemContent">
-                            Donec lectus dui, cursus eu hendrerit non, condimentum vel tortor.
-                        </div>
-                        <div class="twitterItemContent">
-                            Pellentesque ut nunc eleifend, varius est non, facilisis justo.
-                        </div>
-                        <div class="twitterItemContent">
-                            Aenean vitae nunc in mi pulvinar egestas.
-                        </div>
-                    </div>
-                    <div id="stickyId"></div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
 </body>
 </html>
