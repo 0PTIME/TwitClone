@@ -135,11 +135,11 @@
         </div>
     </div>
     @if (Route::currentRouteName() === 'messages')
-        <div class="rightMain">
+        <div class="messagesLeft">
                 @yield('pageHeader')
                 @yield('content')
         </div>
-        <div class="main">
+        <div class="messagesRight">
             
         </div>
     @else

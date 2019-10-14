@@ -3,6 +3,7 @@
 
 // Variables
 @import 'variables';
+
 * {
     font-family: $font-family-sans-serif;
     margin: 0;
@@ -764,6 +765,15 @@ div[placeholder]:empty:before {
 .borderBottom{
     border-bottom: 1px solid $twitterBorder;
 }
+.borderLeft{
+    border-left: 1px solid $twitterBorder;
+}
+.borderRight{
+    border-right: 1px solid $twitterBorder;
+}
+.borderTop{
+    border-top: 1px solid $twitterBorder;
+}
 
 .pollResultsWindow{
     width: 100%;
@@ -1042,4 +1052,21 @@ div[placeholder]:empty:before {
     border-radius: 15px;
     border: 1px solid $twitterBorder;
     cursor: pointer; 
+}
+
+
+.messagesRight{
+    width: 600px;
+    height: 100vh;
+    display: inline-block;
+
+}
+
+.messagesLeft{
+    display: inline-block;
+    height: 100vh;
+    width: calc(50vw - 300px);
+    border-left: 1px solid $twitterBorder;
+    border-right: 1px solid $twitterBorder;
+
 }
