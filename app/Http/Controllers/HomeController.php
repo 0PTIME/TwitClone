@@ -24,9 +24,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        // $tweets = Yap::orderBy('created_at', 'DESC')->get();
-        
+    {        
         $tweets = Yap::join('follows', 'user_id', '=', 'followed_id')
             ->where('follower_id', '=', auth()->user()->id)
             ->orderBy('created_at', 'DESC')

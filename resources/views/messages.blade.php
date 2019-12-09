@@ -3,6 +3,7 @@
 @section('pageHeader')
     <div class="mainHeader">
         <p class="globalHeader">Messages</p>
+        <img src="" alt="">
     </div>
 @endsection
 
@@ -11,5 +12,5 @@
 @endsection
 
 @section('content')
-    <p>Messages content</p>  
+    
 @endsection

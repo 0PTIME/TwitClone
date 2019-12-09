@@ -75,6 +75,7 @@ $(document).ready(function(){
         document.getElementById('bigCoverupOpacity').style.display = "none";
       
         document.getElementById('showTweetComposition').style.display = "none";
+        document.getElementById('showCreateMsgid').style.display = "none";
     });
 
     $('#bigTweetButtonId').click(function(){
@@ -296,6 +297,12 @@ $(document).ready(function(){
                 alert("error :(")
             },
         });
+    });
+
+    $('.createMsg').click(function(){
+        console.log("testing out some stuff :)");
+        document.getElementById('showCreateMsgid').style.display = "block";
+        document.getElementById('bigCoverupOpacity').style.display = "block";        
     });
 });
 

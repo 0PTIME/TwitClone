@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Conversation;
+use App\Models\Conversation;
 use Illuminate\Http\Request;
 
 class ConversationController extends Controller
@@ -14,7 +14,7 @@ class ConversationController extends Controller
      */
     public function index()
     {
-        //
+        return view('messages.noconversation');
     }
 
     /**
@@ -24,7 +24,7 @@ class ConversationController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -46,7 +46,7 @@ class ConversationController extends Controller
      */
     public function show(Conversation $conversation)
     {
-        //
+        return view('messages.loadconversation')->with('conversation',  $conversation);
     }
 
     /**

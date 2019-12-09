@@ -136,11 +136,12 @@
     </div>
     @if (Route::currentRouteName() === 'messages')
         <div class="messagesLeft">
-                @yield('pageHeader')
-                @yield('content')
+            @yield('pageHeader')
+            @yield('content')
         </div>
-        <div class="messagesRight">
-            
+        <div class="messagesRight borderRight borderLeft">
+            @include('messages.noconversation')
+            <iframe class="conversationIframe show" src="{{ route('conversation.index') }}" frameborder="0"></iframe>
         </div>
     @else
         <div class="main">

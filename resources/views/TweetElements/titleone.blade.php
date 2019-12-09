@@ -5,7 +5,7 @@
         </div>
         <div style="display: inline;">@</div><div style="display: inline;">{{ $user->name }} · </div>
     </a>
-    <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, 'DIFF_ABSOLUTE', true) }}</div>
+    <div class="timeForHumans" title="{{ $tweet->created_at->format('g:i A') }} · {{ $tweet->created_at->format('M j, Y') }}">{{ $tweet->created_at->diffForHumans(null, true, true) }}</div>
     <div class="downArrWrapper" id="tweet{{ $tweet->id }}drop">
         <div class="downArr"><img alt="loading" src="{{ route('icon', ['name' => 'downarr', 'color' => 'Black', 'size' => '15']) }}"></div>
         <div class="dropdown-content show" id="tweet{{ $tweet->id }}dropdown">
