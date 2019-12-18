@@ -27,7 +27,7 @@ class AssetController extends Controller
     public function profilePic($id, $size = 25){
         if(!isset($id)){ $id = "bogus"; }
         $path = config('envars.profiles_path') . $id . "profilepic.png";
-        $def_path = config('envars.profiles_path') . "defPicWhite.png";
+        $def_path = config('envars.icons_path') . "defPicWhite.png";
         if(file_exists($path)){
             return Image::make($path)->fit($size)->response();
         }
